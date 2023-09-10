@@ -6,6 +6,7 @@
 #include "Jugador.h"
 #include "Zombie.h"
 #include "Plant.h"
+#include "Sol.h"
 
 APVZ_USFX_LAB02GameModeBase::APVZ_USFX_LAB02GameModeBase()
 {
@@ -23,6 +24,10 @@ void APVZ_USFX_LAB02GameModeBase::BeginPlay()
 	UWorld* const World = GetWorld();
 
 	ASpawns* Spawn1 = GetWorld()->SpawnActor<ASpawns>(ASpawns::StaticClass(), SpawnLocationZombie, FRotator::ZeroRotator);
+
+
+	//Aparición de los soles
+	ASol* Sol1 = GetWorld()->SpawnActor<ASol>(ASol::StaticClass(), FVector(-20.0f, -220.0f, 20.0f), FRotator::ZeroRotator);
 
 
 	// Genera 5 zombies
@@ -74,7 +79,7 @@ void APVZ_USFX_LAB02GameModeBase::BeginPlay()
 			//UE_LOG(LogTemp, Warning, TEXT("Energía de %s: %i"), *NombrePlanta, NuevaPlanta->energia);
 
 					// Muestra un mensaje en la pantalla
-			GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Blue, FString::Printf(TEXT("Energía de %s: %i"), *NombrePlanta, NuevaPlanta->energia));
+			GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Purple, FString::Printf(TEXT("Energía de %s: %i"), *NombrePlanta, NuevaPlanta->energia));
 
 					// Agrega la planta al contenedor de plantas
 			MapPlantas.Add(NombrePlanta, NuevaPlanta);
