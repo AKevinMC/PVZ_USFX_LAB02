@@ -34,8 +34,8 @@ void APVZ_USFX_LAB02GameModeBase::BeginPlay()
 
 		NuevoZombie = GetWorld()->SpawnActor<AZombie>(AZombie::StaticClass(), SpawnLocationZombie, FRotator::ZeroRotator);
 
-		//NuevoZombie->Velocidad = FMath::FRandRange(0.1, 0.5);
-		NuevoZombie->Velocidad = 0.02f;
+		NuevoZombie->Velocidad = FMath::FRandRange(0.1, 0.2);
+		//NuevoZombie->Velocidad = 0.02f;
 
 		ArrayZombies.Add(NuevoZombie);
 
@@ -81,7 +81,6 @@ void APVZ_USFX_LAB02GameModeBase::BeginPlay()
 
 			// Coloca al actor (planta) en una posición diferente
 			//NuevaPlanta->SetActorLocation(FVector(i * 100, 0, 0));
-
 
 		}
 		// Define una posición temporal para la planta en Y
