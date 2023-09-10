@@ -33,6 +33,14 @@ void EmptyLinkFunctionForGeneratedCodeZombie() {}
 		static const UE4CodeGen_Private::FMetaDataPairParam Class_MetaDataParams[];
 #endif
 #if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_Velocidad_MetaData[];
+#endif
+		static const UE4CodeGen_Private::FFloatPropertyParams NewProp_Velocidad;
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_energia_MetaData[];
+#endif
+		static const UE4CodeGen_Private::FUnsizedIntPropertyParams NewProp_energia;
+#if WITH_METADATA
 		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_MeshZombie_MetaData[];
 #endif
 		static const UE4CodeGen_Private::FObjectPropertyParams NewProp_MeshZombie;
@@ -51,6 +59,24 @@ void EmptyLinkFunctionForGeneratedCodeZombie() {}
 	};
 #endif
 #if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AZombie_Statics::NewProp_Velocidad_MetaData[] = {
+		{ "Category", "Zombie" },
+		{ "Comment", "// para ver y editar desde el unreal\n" },
+		{ "ModuleRelativePath", "Zombie.h" },
+		{ "ToolTip", "para ver y editar desde el unreal" },
+	};
+#endif
+	const UE4CodeGen_Private::FFloatPropertyParams Z_Construct_UClass_AZombie_Statics::NewProp_Velocidad = { "Velocidad", nullptr, (EPropertyFlags)0x0010000000000001, UE4CodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(AZombie, Velocidad), METADATA_PARAMS(Z_Construct_UClass_AZombie_Statics::NewProp_Velocidad_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AZombie_Statics::NewProp_Velocidad_MetaData)) };
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AZombie_Statics::NewProp_energia_MetaData[] = {
+		{ "Category", "Zombie" },
+		{ "Comment", "// para ver desde el unreal\n" },
+		{ "ModuleRelativePath", "Zombie.h" },
+		{ "ToolTip", "para ver desde el unreal" },
+	};
+#endif
+	const UE4CodeGen_Private::FUnsizedIntPropertyParams Z_Construct_UClass_AZombie_Statics::NewProp_energia = { "energia", nullptr, (EPropertyFlags)0x0010000000020001, UE4CodeGen_Private::EPropertyGenFlags::Int, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(AZombie, energia), METADATA_PARAMS(Z_Construct_UClass_AZombie_Statics::NewProp_energia_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AZombie_Statics::NewProp_energia_MetaData)) };
+#if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AZombie_Statics::NewProp_MeshZombie_MetaData[] = {
 		{ "Category", "Zombie" },
 		{ "EditInline", "true" },
@@ -59,6 +85,8 @@ void EmptyLinkFunctionForGeneratedCodeZombie() {}
 #endif
 	const UE4CodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AZombie_Statics::NewProp_MeshZombie = { "MeshZombie", nullptr, (EPropertyFlags)0x0020080000080009, UE4CodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(AZombie, MeshZombie), Z_Construct_UClass_UStaticMeshComponent_NoRegister, METADATA_PARAMS(Z_Construct_UClass_AZombie_Statics::NewProp_MeshZombie_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AZombie_Statics::NewProp_MeshZombie_MetaData)) };
 	const UE4CodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_AZombie_Statics::PropPointers[] = {
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AZombie_Statics::NewProp_Velocidad,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AZombie_Statics::NewProp_energia,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AZombie_Statics::NewProp_MeshZombie,
 	};
 	const FCppClassTypeInfoStatic Z_Construct_UClass_AZombie_Statics::StaticCppClassTypeInfo = {
@@ -88,7 +116,7 @@ void EmptyLinkFunctionForGeneratedCodeZombie() {}
 		}
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(AZombie, 1824057920);
+	IMPLEMENT_CLASS(AZombie, 2366986298);
 	template<> PVZ_USFX_LAB02_API UClass* StaticClass<AZombie>()
 	{
 		return AZombie::StaticClass();

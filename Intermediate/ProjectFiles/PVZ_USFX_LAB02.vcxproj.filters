@@ -3,7 +3,7 @@
   <ItemGroup>
     <None Include="..\..\PVZ_USFX_LAB02.uproject" />
     <Filter Include="Source">
-      <UniqueIdentifier>{FB841D47-CA80-4563-98C9-AAC5B77CE21B}</UniqueIdentifier>
+      <UniqueIdentifier>{B06D4922-CE7C-48CF-9F50-43E7E998446B}</UniqueIdentifier>
     </Filter>
     <None Include="..\..\Source\PVZ_USFX_LAB02.Target.cs">
       <Filter>Source</Filter>
@@ -11,8 +11,10 @@
     <None Include="..\..\Source\PVZ_USFX_LAB02Editor.Target.cs">
       <Filter>Source</Filter>
     </None>
+    <None Include="..\..\.gitattributes" />
+    <None Include="..\..\.gitignore" />
     <Filter Include="Config">
-      <UniqueIdentifier>{C6323467-4972-4E57-9379-5C72B1AE6BE0}</UniqueIdentifier>
+      <UniqueIdentifier>{57F118B4-D4EA-44E7-9C2A-A39C93364842}</UniqueIdentifier>
     </Filter>
     <None Include="..\..\Config\DefaultEditor.ini">
       <Filter>Config</Filter>
@@ -24,12 +26,24 @@
       <Filter>Config</Filter>
     </None>
     <Filter Include="Source\PVZ_USFX_LAB02">
-      <UniqueIdentifier>{C99433F5-64B2-4E13-B572-A3417B2FCE73}</UniqueIdentifier>
+      <UniqueIdentifier>{9CD51B1B-1845-48E0-977C-36BCCD85E2F9}</UniqueIdentifier>
     </Filter>
+    <ClCompile Include="..\..\Source\PVZ_USFX_LAB02\Jugador.cpp">
+      <Filter>Source\PVZ_USFX_LAB02</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\PVZ_USFX_LAB02\Jugador.h">
+      <Filter>Source\PVZ_USFX_LAB02</Filter>
+    </ClInclude>
     <ClCompile Include="..\..\Source\PVZ_USFX_LAB02\Plant.cpp">
       <Filter>Source\PVZ_USFX_LAB02</Filter>
     </ClCompile>
     <ClInclude Include="..\..\Source\PVZ_USFX_LAB02\Plant.h">
+      <Filter>Source\PVZ_USFX_LAB02</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\PVZ_USFX_LAB02\Proyectil.cpp">
+      <Filter>Source\PVZ_USFX_LAB02</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\PVZ_USFX_LAB02\Proyectil.h">
       <Filter>Source\PVZ_USFX_LAB02</Filter>
     </ClInclude>
     <None Include="..\..\Source\PVZ_USFX_LAB02\PVZ_USFX_LAB02.Build.cs">

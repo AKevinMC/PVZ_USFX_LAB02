@@ -15,7 +15,12 @@ AZombie::AZombie()
 	static ConstructorHelpers::FObjectFinder<UStaticMesh> ZombieMesh01(TEXT("StaticMesh'/Game/StarterContent/Shapes/Shape_QuadPyramid.Shape_QuadPyramid'"));
 	MeshZombie->SetStaticMesh(ZombieMesh01.Object);
 
-	Velocidad = 100;
+
+	energia = 100;
+	Velocidad = 0.02f;
+
+	//InitialLifeSpan = 5; //Para que el actor se destruya
+
 }
 
 // Called when the game starts or when spawned
@@ -30,10 +35,14 @@ void AZombie::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
-	FVector LocalizacionObjetivo = FVector(0, 200.0, 100.0); // Cambia la ubicación objetivo según tus necesidades
+	FVector LocalizacionObjetivo = FVector(-550.0f, -850.0f, 20.0f); // Cambia la ubicación objetivo según tus necesidades
 
 	// Calcula la dirección y distancia al objetivo
-	FVector Direccion = (LocalizacionObjetivo - this->GetActorLocation()).GetSafeNormal();
+	FVector Direccion = LocalizacionObjetivo - FVector(-550.0f, 850.0f, 20.0f);
+
+	//FVector Direccion = (LocalizacionObjetivo - this->GetActorLocation()).GetSafeNormal();
+	//FVector Direccion = (LocalizacionObjetivo - this->GetActorLocation());
+
 	float DistanciaAlObjetivo = FVector::Dist(LocalizacionObjetivo, this->GetActorLocation());
 
 	// Calcula el desplazamiento en este frame
@@ -50,5 +59,14 @@ void AZombie::Tick(float DeltaTime)
 		this->AddActorWorldOffset(Direccion * DeltaMove);
 	}
 
+}
+
+void AZombie::morir()
+{
+
+
+	//Destroy();			//El actor se destruye
+	//this->Destroy();		//El actor también se destruye
+	//SetActorHiddenInGame(true);	//El actor sólo desaparece
 }
 

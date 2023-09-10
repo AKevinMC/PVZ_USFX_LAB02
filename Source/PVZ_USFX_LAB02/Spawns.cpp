@@ -17,8 +17,8 @@ void ASpawns::BeginPlay()
 {
 	Super::BeginPlay();
 	
-	AZombie* Zombie1 = GetWorld()->SpawnActor<AZombie>(AZombie::StaticClass(), FVector(400.0, 200.0, 100.0), FRotator::ZeroRotator);
-	APlant* Planta1 = GetWorld()->SpawnActor<APlant>(APlant::StaticClass(), FVector(-100.0, 200.0, 100.0), FRotator::ZeroRotator);
+	/*AZombie* Zombie1 = GetWorld()->SpawnActor<AZombie>(AZombie::StaticClass(), FVector(400.0, 200.0, 100.0), FRotator::ZeroRotator);
+	APlant* Planta1 = GetWorld()->SpawnActor<APlant>(APlant::StaticClass(), FVector(-100.0, 200.0, 100.0), FRotator::ZeroRotator);*/
 
 }
 
@@ -26,6 +26,8 @@ void ASpawns::BeginPlay()
 void ASpawns::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
+
+
 
 }
 

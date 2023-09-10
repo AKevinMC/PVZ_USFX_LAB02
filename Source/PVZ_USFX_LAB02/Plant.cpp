@@ -15,6 +15,7 @@ APlant::APlant()
 	static ConstructorHelpers::FObjectFinder<UStaticMesh> PLantaMesh01(TEXT("StaticMesh'/Game/StarterContent/Shapes/Shape_Cylinder.Shape_Cylinder'"));
 	MeshPlanta->SetStaticMesh(PLantaMesh01.Object);
 
+	energia = 100;
 }
 
 // Called when the game starts or when spawned

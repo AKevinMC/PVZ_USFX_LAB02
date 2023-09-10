@@ -40,7 +40,6 @@ void EmptyLinkFunctionForGeneratedCodePVZ_USFX_LAB02GameModeBase() {}
 	};
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_APVZ_USFX_LAB02GameModeBase_Statics::Class_MetaDataParams[] = {
-		{ "Comment", "/**\n * \n */" },
 		{ "HideCategories", "Info Rendering MovementReplication Replication Actor Input Movement Collision Rendering Utilities|Transformation" },
 		{ "IncludePath", "PVZ_USFX_LAB02GameModeBase.h" },
 		{ "ModuleRelativePath", "PVZ_USFX_LAB02GameModeBase.h" },
@@ -74,7 +73,7 @@ void EmptyLinkFunctionForGeneratedCodePVZ_USFX_LAB02GameModeBase() {}
 		}
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(APVZ_USFX_LAB02GameModeBase, 3298652829);
+	IMPLEMENT_CLASS(APVZ_USFX_LAB02GameModeBase, 1328575775);
 	template<> PVZ_USFX_LAB02_API UClass* StaticClass<APVZ_USFX_LAB02GameModeBase>()
 	{
 		return APVZ_USFX_LAB02GameModeBase::StaticClass();

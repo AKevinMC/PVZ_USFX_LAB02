@@ -32,16 +32,14 @@
 /wd4244
 /wd4838
 /I .
-/I D:\VSProject\PVZ_USFX_LAB02\Intermediate\Build\Win64\UE4Editor\Inc\PVZ_USFX_LAB02
-/I D:\VSProject\PVZ_USFX_LAB02\Source
+/I ..\Intermediate\Build\Win64\UE4Editor\Inc\Engine
 /I Runtime
+/I Runtime\Engine\Classes
+/I Runtime\Engine\Public
 /I Runtime\TraceLog\Public
 /I Runtime\Core\Public
 /I ..\Intermediate\Build\Win64\UE4Editor\Inc\CoreUObject
 /I Runtime\CoreUObject\Public
-/I ..\Intermediate\Build\Win64\UE4Editor\Inc\Engine
-/I Runtime\Engine\Classes
-/I Runtime\Engine\Public
 /I ..\Intermediate\Build\Win64\UE4Editor\Inc\NetCore
 /I Runtime\Net
 /I Runtime\Net\Core\Classes
@@ -233,6 +231,8 @@
 /I Editor\Kismet\Public
 /I ..\Intermediate\Build\Win64\UE4Editor\Inc\ClothingSystemRuntimeInterface
 /I Runtime\ClothingSystemRuntimeInterface\Public
+/I D:\VSProject\PVZ_USFX_LAB02\Intermediate\Build\Win64\UE4Editor\Inc\PVZ_USFX_LAB02
+/I D:\VSProject\PVZ_USFX_LAB02\Source
 /I ThirdParty\PhysX3\PxShared\include
 /I ThirdParty\PhysX3\PxShared\include\cudamanager
 /I ThirdParty\PhysX3\PxShared\include\filebuf
@@ -262,11 +262,8 @@
 /I "C:\Program Files (x86)\Windows Kits\10\include\10.0.22621.0\shared"
 /I "C:\Program Files (x86)\Windows Kits\10\include\10.0.22621.0\um"
 /I "C:\Program Files (x86)\Windows Kits\10\include\10.0.22621.0\winrt"
-/FI"D:\VSProject\PVZ_USFX_LAB02\Intermediate\Build\Win64\PVZ_USFX_LAB02Editor\Development\Engine\SharedPCH.Engine.ShadowErrors.h"
-/Yu"D:\VSProject\PVZ_USFX_LAB02\Intermediate\Build\Win64\PVZ_USFX_LAB02Editor\Development\Engine\SharedPCH.Engine.ShadowErrors.h"
-/Fp"D:\VSProject\PVZ_USFX_LAB02\Intermediate\Build\Win64\PVZ_USFX_LAB02Editor\Development\Engine\SharedPCH.Engine.ShadowErrors.h.pch"
 "D:\VSProject\PVZ_USFX_LAB02\Source\PVZ_USFX_LAB02\PVZ_USFX_LAB02.cpp"
-/FI"D:\VSProject\PVZ_USFX_LAB02\Intermediate\Build\Win64\UE4Editor\Development\PVZ_USFX_LAB02\Definitions.PVZ_USFX_LAB02.h"
+/FI"D:\VSProject\PVZ_USFX_LAB02\Intermediate\Build\Win64\UE4Editor\Development\PVZ_USFX_LAB02\Definitions.h"
 /Fo"D:\VSProject\PVZ_USFX_LAB02\Intermediate\Build\Win64\UE4Editor\Development\PVZ_USFX_LAB02\PVZ_USFX_LAB02.cpp.obj"
 /TP
 /GR-

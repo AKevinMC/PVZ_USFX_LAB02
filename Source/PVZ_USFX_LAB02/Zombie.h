@@ -15,6 +15,13 @@ public:
 	// Sets default values for this actor's properties
 	AZombie();
 
+	UPROPERTY(EditAnywhere) // para ver y editar desde el unreal
+	float Velocidad;
+
+	UPROPERTY(VisibleAnywhere) // para ver desde el unreal
+	int energia;
+
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
@@ -26,5 +33,7 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
-	float Velocidad;
+
+	void morir();
+
 };
