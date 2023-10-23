@@ -17,3 +17,9 @@ D:\VSProject\PVZ_USFX_LAB02\Source\PVZ_USFX_LAB02\Sol.h
 D:\VSProject\PVZ_USFX_LAB02\Source\PVZ_USFX_LAB02\MovimientoAleatorio.h
 D:\VSProject\PVZ_USFX_LAB02\Intermediate\Build\Win64\UE4Editor\Inc\PVZ_USFX_LAB02\MovimientoAleatorio.generated.h
 D:\VSProject\PVZ_USFX_LAB02\Intermediate\Build\Win64\UE4Editor\Inc\PVZ_USFX_LAB02\Sol.generated.h
+D:\VSProject\PVZ_USFX_LAB02\Source\PVZ_USFX_LAB02\Planta_Ataque.h
+D:\VSProject\PVZ_USFX_LAB02\Intermediate\Build\Win64\UE4Editor\Inc\PVZ_USFX_LAB02\Planta_Ataque.generated.h
+D:\VSProject\PVZ_USFX_LAB02\Source\PVZ_USFX_LAB02\GeneradorZombies.h
+D:\VSProject\PVZ_USFX_LAB02\Intermediate\Build\Win64\UE4Editor\Inc\PVZ_USFX_LAB02\GeneradorZombies.generated.h
+D:\VSProject\PVZ_USFX_LAB02\Source\PVZ_USFX_LAB02\GeneradorZombiesTierra.h
+D:\VSProject\PVZ_USFX_LAB02\Intermediate\Build\Win64\UE4Editor\Inc\PVZ_USFX_LAB02\GeneradorZombiesTierra.generated.h

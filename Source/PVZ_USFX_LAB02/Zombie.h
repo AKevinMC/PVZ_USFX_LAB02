@@ -21,6 +21,17 @@ public:
 	UPROPERTY(VisibleAnywhere) // para ver desde el unreal
 	int energia;
 
+	UPROPERTY(VisibleAnywhere) // para ver desde el unreal
+	int Fuerza;
+
+	FVector LocalizacionObjetivo;
+	FVector Direccion;
+	float DistanciaAlObjetivo;
+
+	bool bCanMove = false;
+	float SpawnAfter = 0.0f;
+
+	float TiempoTranscurrido;
 
 protected:
 	// Called when the game starts or when spawned
@@ -33,7 +44,13 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
+	virtual void Attack();
 
 	void morir();
 
+	void VelocidadRandom(float V1, float V2);
+
+	FORCEINLINE void SetSpawnAfter(float _SpawnAfter) { SpawnAfter = _SpawnAfter; }
+	FORCEINLINE float GetSpawnAfter() { return SpawnAfter; }
+	FORCEINLINE void SetCanMove(bool _bCanMove) { bCanMove = _bCanMove; }
 };

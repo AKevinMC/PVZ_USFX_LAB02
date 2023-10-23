@@ -2,6 +2,9 @@
 
 
 #include "Zombie.h"
+#include "PVZ_USFX_LAB02GameModeBase.h"
+#include <Kismet/GameplayStatics.h>
+#include "Plant.h"
 
 // Sets default values
 AZombie::AZombie()
@@ -12,14 +15,17 @@ AZombie::AZombie()
 	MeshZombie = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Zombie Mesh"));
 	RootComponent = MeshZombie;
 
+
 	static ConstructorHelpers::FObjectFinder<UStaticMesh> ZombieMesh01(TEXT("StaticMesh'/Game/StarterContent/Shapes/Shape_QuadPyramid.Shape_QuadPyramid'"));
 	MeshZombie->SetStaticMesh(ZombieMesh01.Object);
 
 
-	energia = 100;
-	Velocidad = 0.02f;
-
+	energia = 1000;
+	Velocidad = 100.00f;
+	Fuerza = 10;
 	//InitialLifeSpan = 5; //Para que el actor se destruya
+
+	LocalizacionObjetivo = FVector(-550.0f, -850.0f, 20.0f); // Cambia la ubicación objetivo según tus necesidades
 
 }
 
@@ -34,39 +40,66 @@ void AZombie::BeginPlay()
 void AZombie::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
+	TiempoTranscurrido += DeltaTime;
 
-	FVector LocalizacionObjetivo = FVector(-550.0f, -850.0f, 20.0f); // Cambia la ubicación objetivo según tus necesidades
+	TArray<AActor*> Plantas; // array donde se guardan todos los actores de la clase APlant
 
-	// Calcula la dirección y distancia al objetivo
-	FVector Direccion = LocalizacionObjetivo - FVector(-550.0f, 850.0f, 20.0f);
+	// aqui se llena el array con todos los actores de la clase APlant
+	UGameplayStatics::GetAllActorsOfClass(GetWorld(), APlant::StaticClass(), Plantas);
 
-	//FVector Direccion = (LocalizacionObjetivo - this->GetActorLocation()).GetSafeNormal();
-	//FVector Direccion = (LocalizacionObjetivo - this->GetActorLocation());
+	// recorrer el array Plantas y comparar la posicion x de cada planta con la posicion x del zombie
+	for (int32 i = 0; i < Plantas.Num(); i++)
+	{
+		// comparar la posicion x de la Planta con la del zombie
 
-	float DistanciaAlObjetivo = FVector::Dist(LocalizacionObjetivo, this->GetActorLocation());
+		if (Plantas[i]->GetActorLocation().X == this->GetActorLocation().X) {
+			// si la posicion x de la planta es igual a la del zombie, entonces la planta es el objetivo
+			LocalizacionObjetivo = Plantas[i]->GetActorLocation();
+			// calcula la direccion y distancia al objetivo
+			Direccion = (LocalizacionObjetivo - this->GetActorLocation()).GetSafeNormal();
+			// calcula la distancia al objetivo
+			DistanciaAlObjetivo = FVector::Dist(LocalizacionObjetivo, this->GetActorLocation());
+		}
 
+	}
+
+	// Mueve el Zombie si puede moverse y no está oculto
+	if (bCanMove && !this->IsHidden()) {
 	// Calcula el desplazamiento en este frame
 	float DeltaMove = Velocidad * GetWorld()->DeltaTimeSeconds;
 
-	if (DeltaMove > DistanciaAlObjetivo)
-	{
-		// Si el desplazamiento excede la distancia al objetivo, mueve directamente al objetivo
-		this->SetActorLocation(LocalizacionObjetivo);
-	}
-	else
-	{
-		// Mueve el objeto en la dirección calculada
-		this->AddActorWorldOffset(Direccion * DeltaMove);
-	}
+		if (DeltaMove > DistanciaAlObjetivo)
+		{
+			// Si el desplazamiento excede la distancia al objetivo, mueve directamente al objetivo
+			this->SetActorLocation(LocalizacionObjetivo);
+		}
+		else
+		{
+			// Mueve el objeto en la dirección calculada
+			this->AddActorWorldOffset(Direccion * DeltaMove);
 
+			// cambiar velocidad cada 1 segundo
+			if (TiempoTranscurrido >= 1.0f) {
+				VelocidadRandom(50, 200);
+				TiempoTranscurrido = 0.0f;
+			}
+		}
+	}
+}
+
+void AZombie::Attack()
+{
+	//ataque de zombie
 }
 
 void AZombie::morir()
 {
-
-
 	//Destroy();			//El actor se destruye
 	//this->Destroy();		//El actor también se destruye
-	//SetActorHiddenInGame(true);	//El actor sólo desaparece
+	//SetActorHiddenInGame(true);	//El actor sólo se oculta
 }
 
+void AZombie::VelocidadRandom(float V1, float V2)
+{
+		Velocidad = +FMath::FRandRange(V1, V2);
+}
