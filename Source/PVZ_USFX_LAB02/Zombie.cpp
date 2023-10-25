@@ -46,12 +46,12 @@ void AZombie::Tick(float DeltaTime)
 
 	// aqui se llena el array con todos los actores de la clase APlant
 	UGameplayStatics::GetAllActorsOfClass(GetWorld(), APlant::StaticClass(), Plantas);
+	bool TienePlantaAlFrente = false;
 
 	// recorrer el array Plantas y comparar la posicion x de cada planta con la posicion x del zombie
 	for (int32 i = 0; i < Plantas.Num(); i++)
 	{
 		// comparar la posicion x de la Planta con la del zombie
-
 		if (Plantas[i]->GetActorLocation().X == this->GetActorLocation().X) {
 			// si la posicion x de la planta es igual a la del zombie, entonces la planta es el objetivo
 			LocalizacionObjetivo = Plantas[i]->GetActorLocation();
@@ -59,8 +59,17 @@ void AZombie::Tick(float DeltaTime)
 			Direccion = (LocalizacionObjetivo - this->GetActorLocation()).GetSafeNormal();
 			// calcula la distancia al objetivo
 			DistanciaAlObjetivo = FVector::Dist(LocalizacionObjetivo, this->GetActorLocation());
+			TienePlantaAlFrente = true;
 		}
-
+		
+	}
+	if (!TienePlantaAlFrente) {
+		// si la posicion x de la planta no es igual a la del zombie, entonces el objetivo es la casa del jugador
+		LocalizacionObjetivo = FVector(this->GetActorLocation().X, -850.0f, this->GetActorLocation().Z);
+		// calcula la direccion y distancia al objetivo
+		Direccion = (LocalizacionObjetivo - this->GetActorLocation()).GetSafeNormal();
+		// calcula la distancia al objetivo
+		DistanciaAlObjetivo = FVector::Dist(LocalizacionObjetivo, this->GetActorLocation());
 	}
 
 	// Mueve el Zombie si puede moverse y no está oculto

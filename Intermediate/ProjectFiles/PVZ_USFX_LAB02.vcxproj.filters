@@ -3,7 +3,7 @@
   <ItemGroup>
     <None Include="..\..\PVZ_USFX_LAB02.uproject" />
     <Filter Include="Source">
-      <UniqueIdentifier>{C4645091-75C1-4855-ABF9-1A642BEC642C}</UniqueIdentifier>
+      <UniqueIdentifier>{DE45DC28-9D4C-4675-9615-1E90F8583FC5}</UniqueIdentifier>
     </Filter>
     <None Include="..\..\Source\PVZ_USFX_LAB02.Target.cs">
       <Filter>Source</Filter>
@@ -14,7 +14,7 @@
     <None Include="..\..\.gitattributes" />
     <None Include="..\..\.gitignore" />
     <Filter Include="Config">
-      <UniqueIdentifier>{4D635582-1DBD-4217-8F5A-645E5011A504}</UniqueIdentifier>
+      <UniqueIdentifier>{265F0A18-0634-4F5D-BA5D-4ED4FD5D110C}</UniqueIdentifier>
     </Filter>
     <None Include="..\..\Config\DefaultEditor.ini">
       <Filter>Config</Filter>
@@ -29,7 +29,7 @@
       <Filter>Config</Filter>
     </None>
     <Filter Include="Source\PVZ_USFX_LAB02">
-      <UniqueIdentifier>{8026B16C-F3F8-41BB-B52E-889D812D453D}</UniqueIdentifier>
+      <UniqueIdentifier>{17373B45-D04B-4DFA-841C-A10944ED1147}</UniqueIdentifier>
     </Filter>
     <ClCompile Include="..\..\Source\PVZ_USFX_LAB02\GeneradorZombies.cpp">
       <Filter>Source\PVZ_USFX_LAB02</Filter>

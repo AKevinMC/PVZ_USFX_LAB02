@@ -104,11 +104,12 @@ void APVZ_USFX_LAB02GameModeBase::BeginPlay()
 			SpawnLocationPlantTemp.Y += 180;
 
 			// Genera un nombre para la planta
-			FString NombrePlanta = FString::Printf(TEXT("Planta%d"), i + 1);
+			FString NombrePlanta = FString::Printf(TEXT("Planta%d"), i * 2 + j + 1);
+			GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Purple, FString::Printf(TEXT("Energía de %d"), i * 2 + j + 1));
 
 			// Crea una nueva instancia de APlant en el mundo
-			APlanta_Ataque* NuevaPlanta = GetWorld()->SpawnActor<APlanta_Ataque>(APlanta_Ataque::StaticClass(), SpawnLocationPlantTemp, FRotator::ZeroRotator);
-			//APlant* NuevaPlanta = GetWorld()->SpawnActor<APlant>(APlant::StaticClass(), SpawnLocationPlantTemp, FRotator::ZeroRotator);
+			//APlanta_Ataque* NuevaPlanta = GetWorld()->SpawnActor<APlanta_Ataque>(APlanta_Ataque::StaticClass(), SpawnLocationPlantTemp, FRotator::ZeroRotator);
+			APlant* NuevaPlanta = GetWorld()->SpawnActor<APlant>(APlant::StaticClass(), SpawnLocationPlantTemp, FRotator::ZeroRotator);
 
 					 //Asigna un valor aleatorio a la energía de la planta
 			NuevaPlanta->energia = FMath::FRandRange(0.0, 10.0);
@@ -133,32 +134,24 @@ void APVZ_USFX_LAB02GameModeBase::BeginPlay()
 	
 // **** BORRAR UNA PLANTA DEL MUNDO PARA VER SI EL ZOMBIE SE MUEVE HACIA LA SIGUIENTE PLANTA ****
 
-	//FString ClaveABuscar = FString::Printf(TEXT("Planta5")); // La clave que deseas buscar
+	FString ClaveABuscar = FString::Printf(TEXT("Planta10")); // La primera clave que deseas buscar
+	FString ClaveABuscar2 = FString::Printf(TEXT("Planta9")); // La segunda clave que deseas buscar
 
-	//APlant* PlantaEncontrada = nullptr;
+	TArray<APlant*> PlantasAEliminar;
 
-	//for (TMap<FString, APlant*>::TIterator It(MapPlantas); It; ++It)
-	//{
-	//	if (It.Key() == ClaveABuscar)
-	//	{
-	//		PlantaEncontrada = It.Value();
-	//		break; // Si se encuentra la planta, sal del bucle
-	//	}
-	//}
+	for (TMap<FString, APlant*>::TIterator It(MapPlantas); It; ++It)
+	{
+		if (It.Key() == ClaveABuscar || It.Key() == ClaveABuscar2)
+		{
+			PlantasAEliminar.Add(It.Value());
+		}
+	}
 
-	//if (PlantaEncontrada != nullptr)
-	//{
-	//	PlantaEncontrada->Destroy(); // Destruye la planta
-	//	// La planta con la clave "Planta5" se encontró en el mapa, puedes trabajar con ella aquí.
-	//}
-	//else
-	//{
-	//	// La clave "Planta5" no se encontró en el mapa.
-	//}
-
-
+	for (APlant* Planta : PlantasAEliminar)
+	{
+		Planta->Destroy();
+	}
 }
-
 
 void APVZ_USFX_LAB02GameModeBase::Tick(float DeltaTime)
 	{
