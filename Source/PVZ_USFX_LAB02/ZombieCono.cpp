@@ -12,7 +12,7 @@ AZombieCono::AZombieCono()
 void AZombieCono::BeginPlay()
 {
 	Super::BeginPlay();
-	energia = 150;
+	energia = 30;
 	Velocidad = 150.00f;
 	Fuerza = 15;
 }

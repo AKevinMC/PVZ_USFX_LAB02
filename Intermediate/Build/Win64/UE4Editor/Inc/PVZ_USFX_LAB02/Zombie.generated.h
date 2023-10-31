@@ -22,7 +22,8 @@ private: \
 	friend struct Z_Construct_UClass_AZombie_Statics; \
 public: \
 	DECLARE_CLASS(AZombie, AActor, COMPILED_IN_FLAGS(0 | CLASS_Config), CASTCLASS_None, TEXT("/Script/PVZ_USFX_LAB02"), NO_API) \
-	DECLARE_SERIALIZER(AZombie)
+	DECLARE_SERIALIZER(AZombie) \
+	virtual UObject* _getUObject() const override { return const_cast<AZombie*>(this); }
 
 
 #define PVZ_USFX_LAB02_Source_PVZ_USFX_LAB02_Zombie_h_12_INCLASS \
@@ -31,7 +32,8 @@ private: \
 	friend struct Z_Construct_UClass_AZombie_Statics; \
 public: \
 	DECLARE_CLASS(AZombie, AActor, COMPILED_IN_FLAGS(0 | CLASS_Config), CASTCLASS_None, TEXT("/Script/PVZ_USFX_LAB02"), NO_API) \
-	DECLARE_SERIALIZER(AZombie)
+	DECLARE_SERIALIZER(AZombie) \
+	virtual UObject* _getUObject() const override { return const_cast<AZombie*>(this); }
 
 
 #define PVZ_USFX_LAB02_Source_PVZ_USFX_LAB02_Zombie_h_12_STANDARD_CONSTRUCTORS \

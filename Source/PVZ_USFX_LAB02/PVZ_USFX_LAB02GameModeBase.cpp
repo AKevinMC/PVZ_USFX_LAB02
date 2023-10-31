@@ -108,8 +108,8 @@ void APVZ_USFX_LAB02GameModeBase::BeginPlay()
 			GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Purple, FString::Printf(TEXT("Energía de %d"), i * 2 + j + 1));
 
 			// Crea una nueva instancia de APlant en el mundo
-			//APlanta_Ataque* NuevaPlanta = GetWorld()->SpawnActor<APlanta_Ataque>(APlanta_Ataque::StaticClass(), SpawnLocationPlantTemp, FRotator::ZeroRotator);
-			APlant* NuevaPlanta = GetWorld()->SpawnActor<APlant>(APlant::StaticClass(), SpawnLocationPlantTemp, FRotator::ZeroRotator);
+			APlanta_Ataque* NuevaPlanta = GetWorld()->SpawnActor<APlanta_Ataque>(APlanta_Ataque::StaticClass(), SpawnLocationPlantTemp, FRotator::ZeroRotator);
+			//APlant* NuevaPlanta = GetWorld()->SpawnActor<APlant>(APlant::StaticClass(), SpawnLocationPlantTemp, FRotator::ZeroRotator);
 
 					 //Asigna un valor aleatorio a la energía de la planta
 			NuevaPlanta->energia = FMath::FRandRange(0.0, 10.0);
@@ -165,6 +165,9 @@ void APVZ_USFX_LAB02GameModeBase::Tick(float DeltaTime)
 		{
 			ActualZombie->SetActorScale3D(FVector(1.0f, 1.0f, 1.0f));      // Establece la escala de spawn deseada
 			ActualZombie->SetActorHiddenInGame(false);      // Haz que el actor sea visible
+			
+//			ActualZombie->Notify();			//Avisa a los observadores que el zombie ha aparecido
+
 			ActualZombie->SetActorEnableCollision(true);     // Habilita las colisiones si es necesario
 			ActualZombie->SetCanMove(true);     // Habilita las colisiones si es necesario
 			NumberZombiesSpawned += 1;

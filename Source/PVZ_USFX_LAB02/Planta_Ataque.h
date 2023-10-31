@@ -1,7 +1,7 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #pragma once
-
+#include "Observer.h"
 #include "CoreMinimal.h"
 #include "Plant.h"
 #include "Planta_Ataque.generated.h"
@@ -10,7 +10,7 @@
  * 
  */
 UCLASS()
-class PVZ_USFX_LAB02_API APlanta_Ataque : public APlant
+class PVZ_USFX_LAB02_API APlanta_Ataque : public APlant, public IObserver
 {
 	GENERATED_BODY()
 	
@@ -20,6 +20,8 @@ public:
 	APlanta_Ataque();
 
 	void AtaquePlanta();
+
+	void Update() override;
 
 public:
 	// Called when the game starts or when spawned

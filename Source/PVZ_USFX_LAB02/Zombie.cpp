@@ -5,6 +5,8 @@
 #include "PVZ_USFX_LAB02GameModeBase.h"
 #include <Kismet/GameplayStatics.h>
 #include "Plant.h"
+#include "Observer.h"
+#include "Planta_Ataque.h"
 
 // Sets default values
 AZombie::AZombie()
@@ -60,6 +62,8 @@ void AZombie::Tick(float DeltaTime)
 			// calcula la distancia al objetivo
 			DistanciaAlObjetivo = FVector::Dist(LocalizacionObjetivo, this->GetActorLocation());
 			TienePlantaAlFrente = true;
+
+			AddObserver(Cast<IObserver>(Plantas[i]));		// se agrega la planta al array de observadores
 		}
 		
 	}
@@ -74,6 +78,9 @@ void AZombie::Tick(float DeltaTime)
 
 	// Mueve el Zombie si puede moverse y no está oculto
 	if (bCanMove && !this->IsHidden()) {
+
+		Notify();	// notifica a los observadores
+
 	// Calcula el desplazamiento en este frame
 	float DeltaMove = Velocidad * GetWorld()->DeltaTimeSeconds;
 
@@ -94,6 +101,10 @@ void AZombie::Tick(float DeltaTime)
 			}
 		}
 	}
+	if (energia <= 0) {
+		
+		morir();
+	};
 }
 
 void AZombie::Attack()
@@ -103,6 +114,13 @@ void AZombie::Attack()
 
 void AZombie::morir()
 {
+	for (int32 i = 0; i < Observers.Num(); i++)
+	{
+		//castear a APlant
+		APlanta_Ataque* Plant = Cast<APlanta_Ataque>(Observers[i]);
+		Plant->bCanFire = false;
+	}
+		Destroy();
 	//Destroy();			//El actor se destruye
 	//this->Destroy();		//El actor también se destruye
 	//SetActorHiddenInGame(true);	//El actor sólo se oculta
@@ -111,4 +129,24 @@ void AZombie::morir()
 void AZombie::VelocidadRandom(float V1, float V2)
 {
 		Velocidad = +FMath::FRandRange(V1, V2);
+}
+
+void AZombie::AddObserver(IObserver* Observer)
+{
+	Observers.Add(Observer);
+
+}
+
+void AZombie::RemoveObserver(IObserver* Observer)
+{
+	Observers.Remove(Observer);
+}
+
+void AZombie::Notify()
+{
+
+	for (int32 i = 0; i < Observers.Num(); i++)
+	{
+		Observers[i]->Update();
+	}
 }

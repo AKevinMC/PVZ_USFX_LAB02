@@ -64,9 +64,9 @@ void AProyectil::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimit
 	if (OtherActor == Zombie) {
 		Zombie->energia -= 10;
 		//GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Yellow, FString::Printf(TEXT("Este es un mensaje %i"), Zombie->energia));
-		if (Zombie->energia <= 0) {
+	/*	if (Zombie->energia <= 0) {
 			Zombie->Destroy();
-		};
+		};*/
 	}
 
 	//APlant* Plant = Cast<APlant>(OtherActor);

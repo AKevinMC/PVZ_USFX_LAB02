@@ -18,6 +18,7 @@ void EmptyLinkFunctionForGeneratedCodeZombie() {}
 	ENGINE_API UClass* Z_Construct_UClass_AActor();
 	UPackage* Z_Construct_UPackage__Script_PVZ_USFX_LAB02();
 	ENGINE_API UClass* Z_Construct_UClass_UStaticMeshComponent_NoRegister();
+	PVZ_USFX_LAB02_API UClass* Z_Construct_UClass_UObservable_NoRegister();
 // End Cross Module References
 	void AZombie::StaticRegisterNativesAZombie()
 	{
@@ -49,6 +50,7 @@ void EmptyLinkFunctionForGeneratedCodeZombie() {}
 #endif
 		static const UE4CodeGen_Private::FObjectPropertyParams NewProp_MeshZombie;
 		static const UE4CodeGen_Private::FPropertyParamsBase* const PropPointers[];
+		static const UE4CodeGen_Private::FImplementedInterfaceParams InterfaceParams[];
 		static const FCppClassTypeInfoStatic StaticCppClassTypeInfo;
 		static const UE4CodeGen_Private::FClassParams ClassParams;
 	};
@@ -103,6 +105,9 @@ void EmptyLinkFunctionForGeneratedCodeZombie() {}
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AZombie_Statics::NewProp_Fuerza,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AZombie_Statics::NewProp_MeshZombie,
 	};
+		const UE4CodeGen_Private::FImplementedInterfaceParams Z_Construct_UClass_AZombie_Statics::InterfaceParams[] = {
+			{ Z_Construct_UClass_UObservable_NoRegister, (int32)VTABLE_OFFSET(AZombie, IObservable), false },
+		};
 	const FCppClassTypeInfoStatic Z_Construct_UClass_AZombie_Statics::StaticCppClassTypeInfo = {
 		TCppClassTypeTraits<AZombie>::IsAbstract,
 	};
@@ -113,11 +118,11 @@ void EmptyLinkFunctionForGeneratedCodeZombie() {}
 		DependentSingletons,
 		nullptr,
 		Z_Construct_UClass_AZombie_Statics::PropPointers,
-		nullptr,
+		InterfaceParams,
 		UE_ARRAY_COUNT(DependentSingletons),
 		0,
 		UE_ARRAY_COUNT(Z_Construct_UClass_AZombie_Statics::PropPointers),
-		0,
+		UE_ARRAY_COUNT(InterfaceParams),
 		0x009000A4u,
 		METADATA_PARAMS(Z_Construct_UClass_AZombie_Statics::Class_MetaDataParams, UE_ARRAY_COUNT(Z_Construct_UClass_AZombie_Statics::Class_MetaDataParams))
 	};
@@ -130,7 +135,7 @@ void EmptyLinkFunctionForGeneratedCodeZombie() {}
 		}
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(AZombie, 445691010);
+	IMPLEMENT_CLASS(AZombie, 3593331191);
 	template<> PVZ_USFX_LAB02_API UClass* StaticClass<AZombie>()
 	{
 		return AZombie::StaticClass();

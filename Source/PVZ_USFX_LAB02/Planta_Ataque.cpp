@@ -26,9 +26,7 @@ APlanta_Ataque::APlanta_Ataque()
 
 	MeshPlanta->SetRelativeScale3D(FVector(0.5f, 0.5f, 1.5f));
 
-
-
-	bCanFire = true;
+	bCanFire = false;
 
 	GunOffset = FVector(40.f, 40.f, 10.f);
 
@@ -46,6 +44,11 @@ void APlanta_Ataque::AtaquePlanta()
 
 }
 
+void APlanta_Ataque::Update()
+{
+	bCanFire = true;
+}
+
 void APlanta_Ataque::BeginPlay()
 {
 
@@ -57,6 +60,11 @@ void APlanta_Ataque::BeginPlay()
 
 void APlanta_Ataque::Tick(float DeltaTime)
 {
+	Super::Tick(DeltaTime);
+
+	TiempoTranscurrido += DeltaTime;
+
+
 
 }
 
