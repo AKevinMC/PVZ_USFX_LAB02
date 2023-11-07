@@ -7,6 +7,7 @@
 #include "Plant.h"
 #include "Observer.h"
 #include "Planta_Ataque.h"
+#include "PartidaObservable.h"
 
 // Sets default values
 AZombie::AZombie()
@@ -116,10 +117,11 @@ void AZombie::morir()
 {
 	for (int32 i = 0; i < Observers.Num(); i++)
 	{
-		//castear a APlant
+		//castear a APlanta_Ataque
 		APlanta_Ataque* Plant = Cast<APlanta_Ataque>(Observers[i]);
 		Plant->bCanFire = false;
 	}
+	PartidaObservable->RemoveObserver(this);
 		Destroy();
 	//Destroy();			//El actor se destruye
 	//this->Destroy();		//El actor también se destruye
@@ -134,7 +136,6 @@ void AZombie::VelocidadRandom(float V1, float V2)
 void AZombie::AddObserver(IObserver* Observer)
 {
 	Observers.Add(Observer);
-
 }
 
 void AZombie::RemoveObserver(IObserver* Observer)
@@ -144,9 +145,54 @@ void AZombie::RemoveObserver(IObserver* Observer)
 
 void AZombie::Notify()
 {
-
-	for (int32 i = 0; i < Observers.Num(); i++)
+	for (int32 i = Observers.Num() - 1; i >= 0; i--)
 	{
-		Observers[i]->Update();
+		if (Observers[i]) // si el observador existe
+		{
+			//Observers[i]->Update();
+			APlanta_Ataque* Plant = Cast<APlanta_Ataque>(Observers[i]);
+			Plant->bCanFire = true;
+		}
+		else // si el observador no existe, se elimina del array
+		{
+			Observers.RemoveAt(i);
+		}
 	}
+}
+
+void AZombie::Update()
+{
+	Cambiar();
+}
+
+void AZombie::SetPartidaObservable(APartidaObservable* _partidaObservable)
+{
+	PartidaObservable = _partidaObservable;
+	PartidaObservable->AddObserver(this);
+}
+
+void AZombie::Cambiar()
+{
+		FString Estado = PartidaObservable->GetEstado();
+
+		if (Estado.Equals("Inicio")){
+		
+	}
+		if (Estado.Equals("Ataque")) {
+		bCanMove = true;
+	}
+		if (Estado.Equals("Pausa"))
+		{
+		bCanMove = false;
+	}
+		if (Estado.Equals("FinPartida"))
+		{
+
+		bCanMove = false;
+		//Destroy();
+		
+		// mueren despues de 2 segundos al terminar la partida
+		// luego se cambiará cuando le den al boton de reiniciar o salir
+		GetWorldTimerManager().SetTimer(TimerHandle, this, &AZombie::morir, 2.0f, true);
+		}
 }

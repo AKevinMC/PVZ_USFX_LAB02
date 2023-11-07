@@ -5,7 +5,7 @@
 
 void AZombieComun::BeginPlay()
 {
-	energia = 100;
+	energia = 300;
 	Velocidad = 100.00f;
 	Fuerza = 10;
 }

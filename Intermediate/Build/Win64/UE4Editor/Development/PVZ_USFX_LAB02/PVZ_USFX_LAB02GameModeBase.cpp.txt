@@ -12,7 +12,13 @@ D:\VSProject\PVZ_USFX_LAB02\Intermediate\Build\Win64\UE4Editor\Inc\PVZ_USFX_LAB0
 D:\VSProject\PVZ_USFX_LAB02\Source\PVZ_USFX_LAB02\Zombie.h
 D:\VSProject\PVZ_USFX_LAB02\Source\PVZ_USFX_LAB02\Observable.h
 D:\VSProject\PVZ_USFX_LAB02\Intermediate\Build\Win64\UE4Editor\Inc\PVZ_USFX_LAB02\Observable.generated.h
+D:\VSProject\PVZ_USFX_LAB02\Source\PVZ_USFX_LAB02\PartidaObservable.h
+D:\VSProject\PVZ_USFX_LAB02\Intermediate\Build\Win64\UE4Editor\Inc\PVZ_USFX_LAB02\PartidaObservable.generated.h
+D:\VSProject\PVZ_USFX_LAB02\Source\PVZ_USFX_LAB02\Observer.h
+D:\VSProject\PVZ_USFX_LAB02\Intermediate\Build\Win64\UE4Editor\Inc\PVZ_USFX_LAB02\Observer.generated.h
 D:\VSProject\PVZ_USFX_LAB02\Intermediate\Build\Win64\UE4Editor\Inc\PVZ_USFX_LAB02\Zombie.generated.h
+D:\VSProject\PVZ_USFX_LAB02\Source\PVZ_USFX_LAB02\ZombieCono.h
+D:\VSProject\PVZ_USFX_LAB02\Intermediate\Build\Win64\UE4Editor\Inc\PVZ_USFX_LAB02\ZombieCono.generated.h
 D:\VSProject\PVZ_USFX_LAB02\Source\PVZ_USFX_LAB02\Plant.h
 D:\VSProject\PVZ_USFX_LAB02\Intermediate\Build\Win64\UE4Editor\Inc\PVZ_USFX_LAB02\Plant.generated.h
 D:\VSProject\PVZ_USFX_LAB02\Source\PVZ_USFX_LAB02\Sol.h
@@ -20,10 +26,17 @@ D:\VSProject\PVZ_USFX_LAB02\Source\PVZ_USFX_LAB02\MovimientoAleatorio.h
 D:\VSProject\PVZ_USFX_LAB02\Intermediate\Build\Win64\UE4Editor\Inc\PVZ_USFX_LAB02\MovimientoAleatorio.generated.h
 D:\VSProject\PVZ_USFX_LAB02\Intermediate\Build\Win64\UE4Editor\Inc\PVZ_USFX_LAB02\Sol.generated.h
 D:\VSProject\PVZ_USFX_LAB02\Source\PVZ_USFX_LAB02\Planta_Ataque.h
-D:\VSProject\PVZ_USFX_LAB02\Source\PVZ_USFX_LAB02\Observer.h
-D:\VSProject\PVZ_USFX_LAB02\Intermediate\Build\Win64\UE4Editor\Inc\PVZ_USFX_LAB02\Observer.generated.h
 D:\VSProject\PVZ_USFX_LAB02\Intermediate\Build\Win64\UE4Editor\Inc\PVZ_USFX_LAB02\Planta_Ataque.generated.h
 D:\VSProject\PVZ_USFX_LAB02\Source\PVZ_USFX_LAB02\GeneradorZombies.h
 D:\VSProject\PVZ_USFX_LAB02\Intermediate\Build\Win64\UE4Editor\Inc\PVZ_USFX_LAB02\GeneradorZombies.generated.h
 D:\VSProject\PVZ_USFX_LAB02\Source\PVZ_USFX_LAB02\GeneradorZombiesTierra.h
 D:\VSProject\PVZ_USFX_LAB02\Intermediate\Build\Win64\UE4Editor\Inc\PVZ_USFX_LAB02\GeneradorZombiesTierra.generated.h
+C:\Program Files\Epic Games\UE_4.27\Engine\Source\Runtime\Engine\Classes\Kismet/GameplayStatics.h
+C:\Program Files\Epic Games\UE_4.27\Engine\Source\Runtime\Engine\Classes\Kismet/KismetSystemLibrary.h
+C:\Program Files\Epic Games\UE_4.27\Engine\Source\Runtime\CoreUObject\Public\UObject/PropertyAccessUtil.h
+C:\Program Files\Epic Games\UE_4.27\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\KismetSystemLibrary.generated.h
+C:\Program Files\Epic Games\UE_4.27\Engine\Source\Runtime\Engine\Classes\Sound/DialogueTypes.h
+C:\Program Files\Epic Games\UE_4.27\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\DialogueTypes.generated.h
+C:\Program Files\Epic Games\UE_4.27\Engine\Source\Runtime\Engine\Classes\Kismet\GameplayStaticsTypes.h
+C:\Program Files\Epic Games\UE_4.27\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\GameplayStaticsTypes.generated.h
+C:\Program Files\Epic Games\UE_4.27\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\GameplayStatics.generated.h

@@ -6,9 +6,8 @@
 #include "GameFramework/GameModeBase.h"
 #include "PVZ_USFX_LAB02GameModeBase.generated.h"
 
-/**
- * 
- */
+class APlanta_Ataque;
+class APartidaObservable;
 class AZombie;
 class APlant;
 UCLASS()
@@ -20,6 +19,7 @@ public:
 	// Sets default values for this actor's properties
 	APVZ_USFX_LAB02GameModeBase();
 
+	APartidaObservable* PartidaObservable;
 	FVector SpawnLocationZombie;
 	TArray<AZombie*> ArrayZombies;
 	AZombie* NuevoZombie;
@@ -29,7 +29,7 @@ public:
 	int32 NumberZombiesSpawned = 0;
 
 
-	TMap<FString, APlant*> MapPlantas;
+	TMap<FString, APlanta_Ataque*> MapPlantas;
 
 //	APlant* NuevaPlanta;
 	FVector SpawnLocationPlant;

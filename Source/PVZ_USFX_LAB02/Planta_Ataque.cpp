@@ -8,7 +8,7 @@
 #include "Components/BoxComponent.h"
 #include "Kismet/GameplayStatics.h"
 #include "Engine/World.h"
-
+#include "PartidaObservable.h"
 #include "Proyectil.h"
 
 #include "TimerManager.h"
@@ -46,7 +46,44 @@ void APlanta_Ataque::AtaquePlanta()
 
 void APlanta_Ataque::Update()
 {
-	bCanFire = true;
+	//bCanFire = true;
+	Cambiar();
+}
+
+void APlanta_Ataque::Cambiar()
+{
+	FString Estado = PartidaObservable->GetEstado();
+
+	if (Estado.Equals("Inicio"))
+	{
+
+	}
+	if (Estado.Equals("Ataque")) {
+		bCanFire = true;
+	}
+	if (Estado.Equals("Pausa"))
+	{
+		bCanFire = false;
+	}
+	if (Estado.Equals("FinPartida"))
+	{
+		bCanFire = false;
+		
+		GetWorldTimerManager().SetTimer(TimerHandle, this, &APlanta_Ataque::morir, 2.0f, true);
+	}
+
+}
+
+void APlanta_Ataque::SetPartidaObservable(APartidaObservable* _partidaObservable)
+{
+		PartidaObservable = _partidaObservable;
+		PartidaObservable->AddObserver(this);
+}
+
+void APlanta_Ataque::morir()
+{
+	PartidaObservable->RemoveObserver(this);
+	Destroy();
 }
 
 void APlanta_Ataque::BeginPlay()

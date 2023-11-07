@@ -4,4 +4,8 @@ C:\Program Files\Epic Games\UE_4.27\Engine\Source\Runtime\CoreUObject\Public\UOb
 D:\VSProject\PVZ_USFX_LAB02\Source\PVZ_USFX_LAB02/Zombie.h
 D:\VSProject\PVZ_USFX_LAB02\Source\PVZ_USFX_LAB02\Observable.h
 D:\VSProject\PVZ_USFX_LAB02\Intermediate\Build\Win64\UE4Editor\Inc\PVZ_USFX_LAB02\Observable.generated.h
+D:\VSProject\PVZ_USFX_LAB02\Source\PVZ_USFX_LAB02\PartidaObservable.h
+D:\VSProject\PVZ_USFX_LAB02\Intermediate\Build\Win64\UE4Editor\Inc\PVZ_USFX_LAB02\PartidaObservable.generated.h
+D:\VSProject\PVZ_USFX_LAB02\Source\PVZ_USFX_LAB02\Observer.h
+D:\VSProject\PVZ_USFX_LAB02\Intermediate\Build\Win64\UE4Editor\Inc\PVZ_USFX_LAB02\Observer.generated.h
 D:\VSProject\PVZ_USFX_LAB02\Intermediate\Build\Win64\UE4Editor\Inc\PVZ_USFX_LAB02\Zombie.generated.h

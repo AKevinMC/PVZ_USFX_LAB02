@@ -2,12 +2,14 @@
 
 #pragma once
 #include "Observable.h"
+#include "PartidaObservable.h"
+#include "Observer.h"
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
 #include "Zombie.generated.h"
-
+class APartidaObservable;
 UCLASS()
-class PVZ_USFX_LAB02_API AZombie : public AActor, public IObservable
+class PVZ_USFX_LAB02_API AZombie : public AActor, public IObservable, public IObserver
 {
 	GENERATED_BODY()
 	
@@ -32,8 +34,9 @@ public:
 	float SpawnAfter = 0.0f;
 
 	float TiempoTranscurrido;
+	FTimerHandle TimerHandle;
 
-	TArray<class IObserver*> Observers;
+	APartidaObservable* PartidaObservable;
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
@@ -58,4 +61,10 @@ public:
 	void AddObserver(class IObserver* Observer) override;
 	void RemoveObserver(class IObserver* Observer) override;
 	void Notify() override;
+
+	void Update() override;
+
+	void SetPartidaObservable(APartidaObservable* _partidaObservable);
+
+	void Cambiar();
 };

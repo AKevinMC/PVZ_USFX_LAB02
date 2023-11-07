@@ -23,6 +23,8 @@ class PVZ_USFX_LAB02_API IObservable
 	// Add interface functions to this class. This is the class that will be inherited to implement this interface.
 public:
 
+	TArray<class IObserver*> Observers;
+
 	virtual void AddObserver(class IObserver* Observer) = 0;
 	virtual void RemoveObserver(class IObserver* Observer) = 0;
 	virtual void Notify() = 0;

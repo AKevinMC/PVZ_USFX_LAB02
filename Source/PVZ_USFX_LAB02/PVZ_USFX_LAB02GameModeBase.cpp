@@ -5,12 +5,16 @@
 #include "Spawns.h"
 #include "Jugador.h"
 #include "Zombie.h"
+#include "ZombieCono.h"
 #include "Plant.h"
 #include "Sol.h"
 #include "Planta_Ataque.h"
 #include "GeneradorZombies.h"
 #include "GeneradorZombiesTierra.h"
 #include "TimerManager.h"
+#include "PartidaObservable.h"
+#include <Kismet/GameplayStatics.h>
+
 
 APVZ_USFX_LAB02GameModeBase::APVZ_USFX_LAB02GameModeBase()
 {
@@ -54,6 +58,8 @@ void APVZ_USFX_LAB02GameModeBase::BeginPlay()
 
 	//}
 
+	PartidaObservable = GetWorld()->SpawnActor<APartidaObservable>(APartidaObservable::StaticClass());
+
 	// generar zombies cono
 	AGeneradorZombies* GeneradorZombies = GetWorld()->SpawnActor<AGeneradorZombiesTierra>(AGeneradorZombiesTierra::StaticClass());
 
@@ -72,6 +78,7 @@ void APVZ_USFX_LAB02GameModeBase::BeginPlay()
 			NewZombieCono->SetActorHiddenInGame(true);
 			NewZombieCono->SetActorEnableCollision(true);     // Habilita las colisiones si es necesario
 			NewZombieCono->SetCanMove(false);
+			NewZombieCono->SetPartidaObservable(PartidaObservable);
 			ArrayZombies.Add(NewZombieCono);
 		}
 		if (ColumnaZombies == 5)
@@ -110,9 +117,10 @@ void APVZ_USFX_LAB02GameModeBase::BeginPlay()
 			// Crea una nueva instancia de APlant en el mundo
 			APlanta_Ataque* NuevaPlanta = GetWorld()->SpawnActor<APlanta_Ataque>(APlanta_Ataque::StaticClass(), SpawnLocationPlantTemp, FRotator::ZeroRotator);
 			//APlant* NuevaPlanta = GetWorld()->SpawnActor<APlant>(APlant::StaticClass(), SpawnLocationPlantTemp, FRotator::ZeroRotator);
-
 					 //Asigna un valor aleatorio a la energía de la planta
 			NuevaPlanta->energia = FMath::FRandRange(0.0, 10.0);
+
+			NuevaPlanta->SetPartidaObservable(PartidaObservable);
 
 					// Muestra un mensaje en la consola
 			//UE_LOG(LogTemp, Warning, TEXT("Energía de %s: %i"), *NombrePlanta, NuevaPlanta->energia);
@@ -131,15 +139,17 @@ void APVZ_USFX_LAB02GameModeBase::BeginPlay()
 
 		SpawnLocationPlantTemp.Y = SpawnLocationPlant.Y;
 	}
+
+	PartidaObservable->SetEstadoPartida("Inicio");
 	
 // **** BORRAR UNA PLANTA DEL MUNDO PARA VER SI EL ZOMBIE SE MUEVE HACIA LA SIGUIENTE PLANTA ****
 
-	FString ClaveABuscar = FString::Printf(TEXT("Planta10")); // La primera clave que deseas buscar
-	FString ClaveABuscar2 = FString::Printf(TEXT("Planta9")); // La segunda clave que deseas buscar
+	FString ClaveABuscar = FString::Printf(TEXT("Planta10")); 
+	FString ClaveABuscar2 = FString::Printf(TEXT("Planta9")); 
 
-	TArray<APlant*> PlantasAEliminar;
+	TArray<APlanta_Ataque*> PlantasAEliminar;
 
-	for (TMap<FString, APlant*>::TIterator It(MapPlantas); It; ++It)
+	for (TMap<FString, APlanta_Ataque*>::TIterator It(MapPlantas); It; ++It)
 	{
 		if (It.Key() == ClaveABuscar || It.Key() == ClaveABuscar2)
 		{
@@ -177,6 +187,22 @@ void APVZ_USFX_LAB02GameModeBase::Tick(float DeltaTime)
 		else
 		{
 			ActualZombie->SetSpawnAfter(ActualZombie->GetSpawnAfter() - DeltaTime);
+		}
+
+
+	}
+	TArray<AActor*> Zombies; // array donde se guardan todos los actores de la clase AZombie
+
+	// aqui se llena el array con todos los actores de la clase AZombie
+	UGameplayStatics::GetAllActorsOfClass(GetWorld(), AActor::StaticClass(), Zombies);
+
+	// recorrer el array para saber si el zombie llego a la casa
+	for (int32 i = 0; i < Zombies.Num(); i++) {
+
+		if (Zombies[i]->GetActorLocation().Y == -850.0f) {
+			// si la posicion y del zombie es igual a la de la casa, entonces el zombie llego a la casa
+			//GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, FString::Printf(TEXT("Zombie llego a la casa")));
+			PartidaObservable->SetEstadoPartida("FinPartida");
 		}
 	}
 

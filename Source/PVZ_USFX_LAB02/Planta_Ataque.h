@@ -6,9 +6,9 @@
 #include "Plant.h"
 #include "Planta_Ataque.generated.h"
 
-/**
- * 
- */
+
+class APartidaObservable;
+ 
 UCLASS()
 class PVZ_USFX_LAB02_API APlanta_Ataque : public APlant, public IObserver
 {
@@ -23,9 +23,18 @@ public:
 
 	void Update() override;
 
+	void Cambiar();
+
+	void SetPartidaObservable(APartidaObservable* _partidaObservable);
+
+	void morir();
+
+
 public:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
+	APartidaObservable* PartidaObservable;
+
 protected:
 
 	FTimerHandle ManejoTiempo;
@@ -51,6 +60,7 @@ protected:
 	void ShotTimerExpired();
 
 	float TiempoTranscurrido;
+	FTimerHandle TimerHandle;
 
 	/** Handle for efficient management of ShotTimerExpired timer */
 	FTimerHandle TimerHandle_ShotTimerExpired;

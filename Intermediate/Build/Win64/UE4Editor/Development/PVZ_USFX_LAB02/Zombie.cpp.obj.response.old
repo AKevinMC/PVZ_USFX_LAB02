@@ -262,11 +262,8 @@
 /I "C:\Program Files (x86)\Windows Kits\10\include\10.0.22621.0\shared"
 /I "C:\Program Files (x86)\Windows Kits\10\include\10.0.22621.0\um"
 /I "C:\Program Files (x86)\Windows Kits\10\include\10.0.22621.0\winrt"
-/FI"D:\VSProject\PVZ_USFX_LAB02\Intermediate\Build\Win64\PVZ_USFX_LAB02Editor\Development\Engine\SharedPCH.Engine.ShadowErrors.h"
-/Yu"D:\VSProject\PVZ_USFX_LAB02\Intermediate\Build\Win64\PVZ_USFX_LAB02Editor\Development\Engine\SharedPCH.Engine.ShadowErrors.h"
-/Fp"D:\VSProject\PVZ_USFX_LAB02\Intermediate\Build\Win64\PVZ_USFX_LAB02Editor\Development\Engine\SharedPCH.Engine.ShadowErrors.h.pch"
 "D:\VSProject\PVZ_USFX_LAB02\Source\PVZ_USFX_LAB02\Zombie.cpp"
-/FI"D:\VSProject\PVZ_USFX_LAB02\Intermediate\Build\Win64\UE4Editor\Development\PVZ_USFX_LAB02\Definitions.PVZ_USFX_LAB02.h"
+/FI"D:\VSProject\PVZ_USFX_LAB02\Intermediate\Build\Win64\UE4Editor\Development\PVZ_USFX_LAB02\Definitions.h"
 /Fo"D:\VSProject\PVZ_USFX_LAB02\Intermediate\Build\Win64\UE4Editor\Development\PVZ_USFX_LAB02\Zombie.cpp.obj"
 /TP
 /GR-
