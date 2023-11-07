@@ -193,6 +193,6 @@ void AZombie::Cambiar()
 		
 		// mueren despues de 2 segundos al terminar la partida
 		// luego se cambiará cuando le den al boton de reiniciar o salir
-		GetWorldTimerManager().SetTimer(TimerHandle, this, &AZombie::morir, 2.0f, true);
+		GetWorldTimerManager().SetTimer(TimerHandle, this, &AZombie::morir, 2.0f, false);
 		}
 }

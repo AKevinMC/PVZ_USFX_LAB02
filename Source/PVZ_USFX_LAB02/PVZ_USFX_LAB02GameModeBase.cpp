@@ -100,7 +100,7 @@ void APVZ_USFX_LAB02GameModeBase::BeginPlay()
 	SpawnLocationPlantTemp = SpawnLocationPlant;
 
 	// Genera 5 plantas
-	for (int i = 0; i < 5; i++)
+	for (int i = 0; i < 4; i++)
 	{
 		//Define una posicion temporal para la planta en X
 		SpawnLocationPlantTemp.X += 200;

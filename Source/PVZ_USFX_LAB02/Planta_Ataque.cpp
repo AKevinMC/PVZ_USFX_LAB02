@@ -64,6 +64,8 @@ void APlanta_Ataque::Cambiar()
 	if (Estado.Equals("Pausa"))
 	{
 		bCanFire = false;
+		GetWorldTimerManager().SetTimer(TimerHandle, this, &APlanta_Ataque::morir, 2.0f, true);
+
 	}
 	if (Estado.Equals("FinPartida"))
 	{
