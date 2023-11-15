@@ -34,6 +34,7 @@
 /NODEFAULTLIB:"LIBCPD"
 /FUNCTIONPADMIN
 "D:\VSProject\PVZ_USFX_LAB02\Intermediate\Build\Win64\PVZ_USFX_LAB02Editor\Development\Engine\SharedPCH.Engine.ShadowErrors.h.obj"
+"D:\VSProject\PVZ_USFX_LAB02\Intermediate\Build\Win64\UE4Editor\Development\PVZ_USFX_LAB02\DefaultMoveStrategy.cpp.obj"
 "D:\VSProject\PVZ_USFX_LAB02\Intermediate\Build\Win64\UE4Editor\Development\PVZ_USFX_LAB02\FastStrategy.cpp.obj"
 "D:\VSProject\PVZ_USFX_LAB02\Intermediate\Build\Win64\UE4Editor\Development\PVZ_USFX_LAB02\GeneradorZombies.cpp.obj"
 "D:\VSProject\PVZ_USFX_LAB02\Intermediate\Build\Win64\UE4Editor\Development\PVZ_USFX_LAB02\GeneradorZombiesTierra.cpp.obj"
@@ -54,6 +55,7 @@
 "D:\VSProject\PVZ_USFX_LAB02\Intermediate\Build\Win64\UE4Editor\Development\PVZ_USFX_LAB02\ZombieComun.cpp.obj"
 "D:\VSProject\PVZ_USFX_LAB02\Intermediate\Build\Win64\UE4Editor\Development\PVZ_USFX_LAB02\ZombieCono.cpp.obj"
 "D:\VSProject\PVZ_USFX_LAB02\Intermediate\Build\Win64\UE4Editor\Development\PVZ_USFX_LAB02\ZombieStrategy.cpp.obj"
+"D:\VSProject\PVZ_USFX_LAB02\Intermediate\Build\Win64\UE4Editor\Development\PVZ_USFX_LAB02\DefaultMoveStrategy.gen.cpp.obj"
 "D:\VSProject\PVZ_USFX_LAB02\Intermediate\Build\Win64\UE4Editor\Development\PVZ_USFX_LAB02\FastStrategy.gen.cpp.obj"
 "D:\VSProject\PVZ_USFX_LAB02\Intermediate\Build\Win64\UE4Editor\Development\PVZ_USFX_LAB02\GeneradorZombies.gen.cpp.obj"
 "D:\VSProject\PVZ_USFX_LAB02\Intermediate\Build\Win64\UE4Editor\Development\PVZ_USFX_LAB02\GeneradorZombiesTierra.gen.cpp.obj"

@@ -22,5 +22,5 @@ class PVZ_USFX_LAB02_API IZombieStrategy
 
 	// Add interface functions to this class. This is the class that will be inherited to implement this interface.
 public:
-	virtual void Move(AZombie*, FVector) = 0;
+	virtual void Move(AZombie*) = 0;
 };

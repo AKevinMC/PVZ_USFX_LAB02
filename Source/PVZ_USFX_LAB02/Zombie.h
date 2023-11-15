@@ -37,8 +37,13 @@ public:
 	float TiempoTranscurrido;
 	FTimerHandle TimerHandle;
 
+	float AlturaSalto;
+	FVector UbicacionInicial;
+	float DistanciaInicial;
+
 	APartidaObservable* PartidaObservable;
 	IZombieStrategy* Strategy;	
+	bool TienePlantaAlFrente;
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
@@ -70,5 +75,5 @@ public:
 
 	void Cambiar();
 	void SetStrategy(IZombieStrategy* _strategy);
-	void Move(FVector);
+	void Move();
 };

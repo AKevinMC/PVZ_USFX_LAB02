@@ -10,6 +10,8 @@ class APlanta_Ataque;
 class APartidaObservable;
 class AZombie;
 class APlant;
+class ASaltoTigreMoveStrategy;
+class ADefaultMoveStrategy;
 
 UCLASS()
 class PVZ_USFX_LAB02_API APVZ_USFX_LAB02GameModeBase : public AGameModeBase
@@ -29,6 +31,8 @@ public:
 
 	int32 NumberZombiesSpawned = 0;
 
+	ASaltoTigreMoveStrategy* SaltoTigreMoveStrategy;
+	ADefaultMoveStrategy* DefaultMoveStrategy;
 
 	TMap<FString, APlanta_Ataque*> MapPlantas;
 

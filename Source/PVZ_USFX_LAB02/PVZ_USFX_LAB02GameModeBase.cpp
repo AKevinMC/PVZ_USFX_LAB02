@@ -15,7 +15,7 @@
 #include "PartidaObservable.h"
 #include <Kismet/GameplayStatics.h>
 #include "DefaultMoveStrategy.h"
-
+#include "SaltoTigreMoveStrategy.h"
 
 APVZ_USFX_LAB02GameModeBase::APVZ_USFX_LAB02GameModeBase()
 {
@@ -38,8 +38,9 @@ void APVZ_USFX_LAB02GameModeBase::BeginPlay()
 
 	ASpawns* Spawn1 = GetWorld()->SpawnActor<ASpawns>(ASpawns::StaticClass(), SpawnLocationZombie, FRotator::ZeroRotator);
 
-	ADefaultMoveStrategy* DefaultMoveStrategy = GetWorld()->SpawnActor<ADefaultMoveStrategy>(ADefaultMoveStrategy::StaticClass());
+	DefaultMoveStrategy = GetWorld()->SpawnActor<ADefaultMoveStrategy>(ADefaultMoveStrategy::StaticClass());
 
+	SaltoTigreMoveStrategy = GetWorld()->SpawnActor<ASaltoTigreMoveStrategy>(ASaltoTigreMoveStrategy::StaticClass());
 	//Aparición de los soles
 	//ASol* Sol1 = GetWorld()->SpawnActor<ASol>(ASol::StaticClass(), FVector(-20.0f, -220.0f, 20.0f), FRotator::ZeroRotator);
 
@@ -103,7 +104,7 @@ void APVZ_USFX_LAB02GameModeBase::BeginPlay()
 	SpawnLocationPlantTemp = SpawnLocationPlant;
 
 	// Genera 5 plantas
-	for (int i = 0; i < 4; i++)
+	for (int i = 0; i < 5; i++)
 	{
 		//Define una posicion temporal para la planta en X
 		SpawnLocationPlantTemp.X += 200;
@@ -197,15 +198,19 @@ void APVZ_USFX_LAB02GameModeBase::Tick(float DeltaTime)
 	TArray<AActor*> Zombies; // array donde se guardan todos los actores de la clase AZombie
 
 	// aqui se llena el array con todos los actores de la clase AZombie
-	UGameplayStatics::GetAllActorsOfClass(GetWorld(), AActor::StaticClass(), Zombies);
+	UGameplayStatics::GetAllActorsOfClass(GetWorld(), AZombie::StaticClass(), Zombies);
 
 	// recorrer el array para saber si el zombie llego a la casa
 	for (int32 i = 0; i < Zombies.Num(); i++) {
-
+		AZombie* Zombieactual = Cast<AZombie>(Zombies[i]);
 		if (Zombies[i]->GetActorLocation().Y == -850.0f) {
 			// si la posicion y del zombie es igual a la de la casa, entonces el zombie llego a la casa
 			//GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, FString::Printf(TEXT("Zombie llego a la casa")));
 			PartidaObservable->SetEstadoPartida("FinPartida");
+		}
+		if (Zombieactual->energia <= 20) {
+			Zombieactual->SetStrategy(SaltoTigreMoveStrategy);
+			//Zombieactual->SetStrategy(DefaultMoveStrategy);
 		}
 	}
 

@@ -17,6 +17,7 @@ public:
 	ADefaultMoveStrategy();
 
 	AZombie* Zombie;
+	float TiempoTranscurrido;
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
@@ -25,5 +26,5 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
-	virtual void Move(AZombie*, FVector) override;
+	virtual void Move(AZombie*) override;
 };
