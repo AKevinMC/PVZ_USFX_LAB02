@@ -10,6 +10,7 @@ class APlanta_Ataque;
 class APartidaObservable;
 class AZombie;
 class APlant;
+
 UCLASS()
 class PVZ_USFX_LAB02_API APVZ_USFX_LAB02GameModeBase : public AGameModeBase
 {

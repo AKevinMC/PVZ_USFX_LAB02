@@ -8,6 +8,7 @@
 #include "Observer.h"
 #include "Planta_Ataque.h"
 #include "PartidaObservable.h"
+#include "ZombieStrategy.h"
 
 // Sets default values
 AZombie::AZombie()
@@ -99,6 +100,8 @@ void AZombie::Tick(float DeltaTime)
 			if (TiempoTranscurrido >= 1.0f) {
 				VelocidadRandom(50, 200);
 				TiempoTranscurrido = 0.0f;
+																		
+															Move(LocalizacionObjetivo);
 			}
 		}
 	}
@@ -195,4 +198,14 @@ void AZombie::Cambiar()
 		// luego se cambiará cuando le den al boton de reiniciar o salir
 		GetWorldTimerManager().SetTimer(TimerHandle, this, &AZombie::morir, 2.0f, false);
 		}
+}
+
+void AZombie::SetStrategy(IZombieStrategy* _strategy)
+{
+	Strategy = _strategy;
+}
+
+void AZombie::Move(FVector _objetivo)
+{
+	Strategy->Move(this, _objetivo);
 }

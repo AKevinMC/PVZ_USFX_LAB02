@@ -14,6 +14,7 @@
 #include "TimerManager.h"
 #include "PartidaObservable.h"
 #include <Kismet/GameplayStatics.h>
+#include "DefaultMoveStrategy.h"
 
 
 APVZ_USFX_LAB02GameModeBase::APVZ_USFX_LAB02GameModeBase()
@@ -37,6 +38,7 @@ void APVZ_USFX_LAB02GameModeBase::BeginPlay()
 
 	ASpawns* Spawn1 = GetWorld()->SpawnActor<ASpawns>(ASpawns::StaticClass(), SpawnLocationZombie, FRotator::ZeroRotator);
 
+	ADefaultMoveStrategy* DefaultMoveStrategy = GetWorld()->SpawnActor<ADefaultMoveStrategy>(ADefaultMoveStrategy::StaticClass());
 
 	//Aparición de los soles
 	//ASol* Sol1 = GetWorld()->SpawnActor<ASol>(ASol::StaticClass(), FVector(-20.0f, -220.0f, 20.0f), FRotator::ZeroRotator);
@@ -80,6 +82,7 @@ void APVZ_USFX_LAB02GameModeBase::BeginPlay()
 			NewZombieCono->SetCanMove(false);
 			NewZombieCono->SetPartidaObservable(PartidaObservable);
 			ArrayZombies.Add(NewZombieCono);
+			NewZombieCono->SetStrategy(DefaultMoveStrategy);  // se le asigna la estrategia por defecto
 		}
 		if (ColumnaZombies == 5)
 		{

@@ -8,6 +8,7 @@
 #include "GameFramework/Actor.h"
 #include "Zombie.generated.h"
 class APartidaObservable;
+class IZombieStrategy;
 UCLASS()
 class PVZ_USFX_LAB02_API AZombie : public AActor, public IObservable, public IObserver
 {
@@ -37,6 +38,7 @@ public:
 	FTimerHandle TimerHandle;
 
 	APartidaObservable* PartidaObservable;
+	IZombieStrategy* Strategy;	
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
@@ -67,4 +69,6 @@ public:
 	void SetPartidaObservable(APartidaObservable* _partidaObservable);
 
 	void Cambiar();
+	void SetStrategy(IZombieStrategy* _strategy);
+	void Move(FVector);
 };

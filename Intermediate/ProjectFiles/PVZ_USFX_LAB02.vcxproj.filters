@@ -3,7 +3,7 @@
   <ItemGroup>
     <None Include="..\..\PVZ_USFX_LAB02.uproject" />
     <Filter Include="Source">
-      <UniqueIdentifier>{E5CF6B5C-5E24-41E7-A4B9-86843E36BF71}</UniqueIdentifier>
+      <UniqueIdentifier>{EA934D67-16B0-47E8-80DE-0B94843BDFF1}</UniqueIdentifier>
     </Filter>
     <None Include="..\..\Source\PVZ_USFX_LAB02.Target.cs">
       <Filter>Source</Filter>
@@ -14,7 +14,7 @@
     <None Include="..\..\.gitattributes" />
     <None Include="..\..\.gitignore" />
     <Filter Include="Config">
-      <UniqueIdentifier>{FE1A9666-89D1-4F84-9605-C9F3F761DFD3}</UniqueIdentifier>
+      <UniqueIdentifier>{AAE00C92-F7E6-4D5B-A1A8-D6AA5BD3A80F}</UniqueIdentifier>
     </Filter>
     <None Include="..\..\Config\DefaultEditor.ini">
       <Filter>Config</Filter>
@@ -29,8 +29,20 @@
       <Filter>Config</Filter>
     </None>
     <Filter Include="Source\PVZ_USFX_LAB02">
-      <UniqueIdentifier>{0870F9A7-7770-4559-B932-58F99595E234}</UniqueIdentifier>
+      <UniqueIdentifier>{E8F99070-644E-42C5-8379-AD4ACC49FEEB}</UniqueIdentifier>
     </Filter>
+    <ClCompile Include="..\..\Source\PVZ_USFX_LAB02\DefaultMoveStrategy.cpp">
+      <Filter>Source\PVZ_USFX_LAB02</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\PVZ_USFX_LAB02\DefaultMoveStrategy.h">
+      <Filter>Source\PVZ_USFX_LAB02</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\PVZ_USFX_LAB02\FastStrategy.cpp">
+      <Filter>Source\PVZ_USFX_LAB02</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\PVZ_USFX_LAB02\FastStrategy.h">
+      <Filter>Source\PVZ_USFX_LAB02</Filter>
+    </ClInclude>
     <ClCompile Include="..\..\Source\PVZ_USFX_LAB02\GeneradorZombies.cpp">
       <Filter>Source\PVZ_USFX_LAB02</Filter>
     </ClCompile>
@@ -140,6 +152,12 @@
       <Filter>Source\PVZ_USFX_LAB02</Filter>
     </ClCompile>
     <ClInclude Include="..\..\Source\PVZ_USFX_LAB02\ZombieCono.h">
+      <Filter>Source\PVZ_USFX_LAB02</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\PVZ_USFX_LAB02\ZombieStrategy.cpp">
+      <Filter>Source\PVZ_USFX_LAB02</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\PVZ_USFX_LAB02\ZombieStrategy.h">
       <Filter>Source\PVZ_USFX_LAB02</Filter>
     </ClInclude>
   </ItemGroup>
