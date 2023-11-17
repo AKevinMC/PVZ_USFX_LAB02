@@ -31,137 +31,117 @@ void ASaltoTigreMoveStrategy::Tick(float DeltaTime)
 
 void ASaltoTigreMoveStrategy::Move(AZombie* _zombie)
 {
-    Zombie = _zombie;
+    AZombie* Zombie = _zombie;
+    APlant* PlantaCercanaY;
     Zombie->Velocidad = 1000.0f;
     TArray<AActor*> Plantas;
     UGameplayStatics::GetAllActorsOfClass(GetWorld(), APlant::StaticClass(), Plantas);
+
+    float DistanciaMinimaY = MAX_FLT; // Inicializa con un valor muy grande
 
     for (int32 i = 0; i < Plantas.Num(); i++)
     {
         // comparar la posicion x de la Planta con la del zombie
         if (FMath::IsNearlyEqual(Plantas[i]->GetActorLocation().X, Zombie->GetActorLocation().X, 0.1f))
         {
-            // guardar la ubicacion inicial del zombie y la distancia inicial y no entrar más al if
-            if (Zombie->DistanciaInicial == 0.0f)
+            float DistanciaEnY = FMath::Abs(Plantas[i]->GetActorLocation().Y - Zombie->GetActorLocation().Y);
+
+            // Compara la distancia en Y para encontrar la planta más cercana en ese eje
+            if (DistanciaEnY < DistanciaMinimaY)
             {
-                Zombie->UbicacionInicial = Zombie->GetActorLocation();
-                Zombie->DistanciaInicial = FVector::Dist(Zombie->UbicacionInicial, Plantas[i]->GetActorLocation());
+                DistanciaMinimaY = DistanciaEnY;
+                PlantaCercanaY = Cast<APlant>(Plantas[i]);
             }
-
-            // si la posicion x de la planta es igual a la del zombie, entonces la planta es el objetivo
-            float AlturaSaltoInicial = Zombie->AlturaSalto; // Almacena la altura de salto inicial
-
-            Zombie->LocalizacionObjetivo = Plantas[i]->GetActorLocation() + FVector(0.0f, 0.0f, Zombie->AlturaSalto);
-            
-            // Calcula la distancia recorrida en el salto
-            float DistanciaRecorrida = FVector::Dist(Zombie->UbicacionInicial, Zombie->GetActorLocation());
-
-            // Ajusta la altura del objetivo en función de la velocidad y la proporción recorrida
-            
-                Zombie->AlturaSalto = FMath::Max(AlturaSaltoInicial * (1.0f - DistanciaRecorrida / Zombie->DistanciaInicial) * Zombie->Velocidad / 200.0f, 0.0f);
-            
-            // calcula la direccion y distancia al objetivo
-            Zombie->Direccion = (Zombie->LocalizacionObjetivo - Zombie->GetActorLocation()).GetSafeNormal();
-            // calcula la distancia al objetivo
-            Zombie->DistanciaAlObjetivo = FVector::Dist(Zombie->LocalizacionObjetivo, Zombie->GetActorLocation());
-            
-            Zombie->TienePlantaAlFrente = true;
-
-            Zombie->AddObserver(Cast<IObserver>(Plantas[i])); // se agrega la planta al array de observadores
         }
     }
 
+    // Verifica si se encontró alguna planta cercana en Y
+    if (PlantaCercanaY != nullptr)
+    {
+        // Ahora PlantaCercanaY apunta a la planta más cercana en el eje Y
+        Zombie->LocalizacionObjetivo = PlantaCercanaY->GetActorLocation();
 
+        // calcula la direccion y distancia al objetivo si no la tiene
+        if (Zombie->Direccion.Z == 0.0f)
+        {
+            Zombie->DistanciaAlObjetivo = FVector::Dist(Zombie->LocalizacionObjetivo, Zombie->GetActorLocation());
+        }
+        Zombie->LocalizacionObjetivo = PlantaCercanaY->GetActorLocation() + FVector(0.0f, 0.0f, Zombie->DistanciaAlObjetivo / 2);
 
-    //for (int32 i = 0; i < Plantas.Num(); i++)
-    //{
-    //    // Comparar la posición x de la Planta con la del zombie
-    //    if (FMath::IsNearlyEqual(Plantas[i]->GetActorLocation().X, Zombie->GetActorLocation().X, 0.1f))
-    //    {
-    //        // Si la posición x de la planta es casi igual a la del zombie, entonces la planta es el objetivo
-    //        Zombie->LocalizacionObjetivo = Plantas[i]->GetActorLocation();
+        // calcula la direccion y distancia al objetivo
+        Zombie->Direccion = (Zombie->LocalizacionObjetivo - Zombie->GetActorLocation()).GetSafeNormal();
+        Zombie->DistanciaAlObjetivo = FVector::Dist(Zombie->LocalizacionObjetivo, Zombie->GetActorLocation());
 
-    //        // Almacena la posición Z inicial de la planta
-    //        float PlantaZInicial = Plantas[i]->GetActorLocation().Z;
+        Zombie->TienePlantaAlFrente = true; // Bandera Para que vaya a la casa
 
-    //        float JumpHeight = 200.0f; // Altura máxima del salto
-    //        float JumpTime = 2.0f;    // Tiempo total del salto
-    //        float JumpProgress = FMath::Clamp(Zombie->JumpTimer / JumpTime, 0.0f, 1.0f); // Progreso lineal
-
-    //        // Ajusta la altura del objetivo utilizando un movimiento lineal para simular un salto
-    //        Zombie->LocalizacionObjetivo.Z = FMath::Lerp(Zombie->GetActorLocation().Z, PlantaZInicial + JumpHeight, JumpProgress);
-
-    //        
-
-    //        // Calcula la dirección y distancia al objetivo
-    //        Zombie->Direccion = (Zombie->LocalizacionObjetivo - Zombie->GetActorLocation()).GetSafeNormal();
-    //        // Calcula la distancia al objetivo
-    //        Zombie->DistanciaAlObjetivo = FVector::Dist(Zombie->LocalizacionObjetivo, Zombie->GetActorLocation());
-    //        Zombie->TienePlantaAlFrente = true;
-
-    //        Zombie->AddObserver(Cast<IObserver>(Plantas[i])); // Se agrega la planta al array de observadores
-
-    //        // Incrementa el temporizador de salto
-    //        Zombie->JumpTimer += TiempoTranscurrido;
-    //    }
-    //}
+        Zombie->AddObserver(Cast<IObserver>(PlantaCercanaY)); // se agrega la planta al array de observadores
+    }
 }
 
 
-//
 //void ASaltoTigreMoveStrategy::Move(AZombie* _zombie)
 //{
-//    Zombie = _zombie;
-//
+//    AZombie* Zombie = _zombie;
+//    APlant* PlataCercana;
+//    Zombie->Velocidad = 1000.0f;
 //    TArray<AActor*> Plantas;
 //    UGameplayStatics::GetAllActorsOfClass(GetWorld(), APlant::StaticClass(), Plantas);
 //
 //    for (int32 i = 0; i < Plantas.Num(); i++)
 //    {
-//        // Comparar la posición x de la Planta con la del zombie
+//        // comparar la posicion x de la Planta con la del zombie
 //        if (FMath::IsNearlyEqual(Plantas[i]->GetActorLocation().X, Zombie->GetActorLocation().X, 0.1f))
 //        {
-//            // Si la posición x de la planta es casi igual a la del zombie, entonces la planta es el objetivo
-//            Zombie->LocalizacionObjetivo = Plantas[i]->GetActorLocation();
 //
-//            // Ajusta la altura del objetivo utilizando una función sinusoidal para simular un salto
-//            float JumpHeight = 50.0f; // Altura máxima del salto
-//            float JumpTime = 1.0f; // Tiempo total del salto
-//            float JumpProgress = FMath::Sin((PI * Zombie->JumpTimer) / JumpTime); // Función sinusoidal para el progreso del salto
-//            Zombie->LocalizacionObjetivo.Z += JumpHeight * JumpProgress;
+//            // calcula la direccion y distancia al objetivo si no la tiene
+//            if (Zombie->Direccion.Z == 0.0f)
+//            {
+//                Zombie->DistanciaAlObjetivo = FVector::Dist(Zombie->LocalizacionObjetivo, Zombie->GetActorLocation());
+//			}
 //
-//            // Incrementa el temporizador de salto
-//            Zombie->JumpTimer += Zombie->TiempoTranscurrido;
+//            // si la posicion x de la planta es igual a la del zombie, entonces la planta es el objetivo
+//            Zombie->LocalizacionObjetivo = Plantas[i]->GetActorLocation() + FVector(0.0f, 0.0f, Zombie->DistanciaAlObjetivo / 2);
 //
-//            // Calcula la dirección y distancia al objetivo
-//            Zombie->Direccion = (Zombie->LocalizacionObjetivo - Zombie->GetActorLocation()).GetSafeNormal();
-//            // Calcula la distancia al objetivo
+//            // calcula la direccion y distancia al objetivo
 //            Zombie->DistanciaAlObjetivo = FVector::Dist(Zombie->LocalizacionObjetivo, Zombie->GetActorLocation());
-//            Zombie->TienePlantaAlFrente = true;
+//            Zombie->Direccion = (Zombie->LocalizacionObjetivo - Zombie->GetActorLocation()).GetSafeNormal();
 //
-//            Zombie->AddObserver(Cast<IObserver>(Plantas[i])); // Se agrega la planta al array de observadores
+//            Zombie->TienePlantaAlFrente = true; // Bandera Para que vaya a la casa
+//
+//            Zombie->AddObserver(Cast<IObserver>(Plantas[i])); // se agrega la planta al array de observadores
 //        }
 //    }
+//}
 
-    //TArray<AActor*> Plantas;
-    //UGameplayStatics::GetAllActorsOfClass(GetWorld(), APlant::StaticClass(), Plantas);
+									//Giro hacia la planta
 
-    //for (int32 i = 0; i < Plantas.Num(); i++)
-    //{
-    //    // Comparar la posición x de la Planta con la del zombie
-    //    if (FMath::IsNearlyEqual(Plantas[i]->GetActorLocation().X, Zombie->GetActorLocation().X, 0.1f))
-    //    {
-    //        // Si la posición x de la planta es casi igual a la del zombie, entonces la planta es el objetivo
-    //        Zombie->LocalizacionObjetivo = Plantas[i]->GetActorLocation();
-    //        // Coloca el objetivo ligeramente por encima de la planta para simular un salto
-    //        Zombie->LocalizacionObjetivo.Z += 100.0f; // Ajusta la altura según tus necesidades
-
-    //        // Calcula la dirección y distancia al objetivo
-    //        Zombie->Direccion = (Zombie->LocalizacionObjetivo - Zombie->GetActorLocation()).GetSafeNormal();
-    //        // Calcula la distancia al objetivo
-    //        Zombie->DistanciaAlObjetivo = FVector::Dist(Zombie->LocalizacionObjetivo, Zombie->GetActorLocation());
-    //        Zombie->TienePlantaAlFrente = true;
-
-    //        Zombie->AddObserver(Cast<IObserver>(Plantas[i])); // Se agrega la planta al array de observadores
-    //    }
-    //}
+//void ASaltoTigreMoveStrategy::Move(AZombie* _zombie)
+//{
+//    AZombie* Zombie = _zombie;
+//    Zombie->Velocidad = 1000.0f;
+//    TArray<AActor*> Plantas;
+//    UGameplayStatics::GetAllActorsOfClass(GetWorld(), APlant::StaticClass(), Plantas);
+//
+//    for (int32 i = 0; i < Plantas.Num(); i++)
+//    {
+//        // comparar la posicion x de la Planta con la del zombie
+//        if (FMath::IsNearlyEqual(Plantas[i]->GetActorLocation().X, Zombie->GetActorLocation().X, 0.1f))
+//        {
+//            // si la posicion x de la planta es igual a la del zombie, entonces la planta es el objetivo
+//            Zombie->LocalizacionObjetivo = Plantas[i]->GetActorLocation();
+//
+//            // calcula la direccion y distancia al objetivo
+//            Zombie->Direccion = (Zombie->LocalizacionObjetivo - Zombie->GetActorLocation()).GetSafeNormal();
+//            // calcula la distancia al objetivo
+//            Zombie->DistanciaAlObjetivo = FVector::Dist(Zombie->LocalizacionObjetivo, Zombie->GetActorLocation());
+//
+//            Zombie->TienePlantaAlFrente = true;
+//
+//            Zombie->AddObserver(Cast<IObserver>(Plantas[i])); // se agrega la planta al array de observadores
+//
+//            // Realiza el giro hacia la planta
+//            FRotator NewRotation = FRotationMatrix::MakeFromX(Zombie->Direccion).Rotator();
+//            Zombie->SetActorRotation(FMath::RInterpTo(Zombie->GetActorRotation(), NewRotation, GetWorld()->GetDeltaSeconds(), 2.0f));
+//        }
+//    }
+//}

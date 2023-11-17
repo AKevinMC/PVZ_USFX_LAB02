@@ -7,7 +7,6 @@
 #include "ZombieStrategy.h"
 #include "SaltoTigreMoveStrategy.generated.h"
 class AZombie;
-class APlant;
 UCLASS()
 class PVZ_USFX_LAB02_API ASaltoTigreMoveStrategy : public AActor, public IZombieStrategy
 {
@@ -17,7 +16,6 @@ public:
 	// Sets default values for this actor's properties
 	ASaltoTigreMoveStrategy();
 
-	AZombie* Zombie;
 	float TiempoTranscurrido;
 
 protected:
@@ -28,5 +26,5 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
-	virtual void Move(AZombie*) override;
+	virtual void Move(AZombie* _zombie) override;
 };

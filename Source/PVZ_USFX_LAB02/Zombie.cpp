@@ -27,7 +27,6 @@ AZombie::AZombie()
 	Velocidad = 100.00f;
 	Fuerza = 10;
 	TienePlantaAlFrente = false;
-	AlturaSalto = 10000.0f;
 	DistanciaInicial= 0.0f;	
 	//InitialLifeSpan = 5; //Para que el actor se destruya
 

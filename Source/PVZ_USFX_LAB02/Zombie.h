@@ -37,7 +37,6 @@ public:
 	float TiempoTranscurrido;
 	FTimerHandle TimerHandle;
 
-	float AlturaSalto;
 	FVector UbicacionInicial;
 	float DistanciaInicial;
 
