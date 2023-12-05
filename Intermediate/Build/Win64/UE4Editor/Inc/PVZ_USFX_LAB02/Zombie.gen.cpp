@@ -77,12 +77,12 @@ void EmptyLinkFunctionForGeneratedCodeZombie() {}
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AZombie_Statics::NewProp_energia_MetaData[] = {
 		{ "Category", "Zombie" },
-		{ "Comment", "// para ver desde el unreal\n" },
+		{ "Comment", "// para ver y editar desde el unreal\n" },
 		{ "ModuleRelativePath", "Zombie.h" },
-		{ "ToolTip", "para ver desde el unreal" },
+		{ "ToolTip", "para ver y editar desde el unreal" },
 	};
 #endif
-	const UE4CodeGen_Private::FUnsizedIntPropertyParams Z_Construct_UClass_AZombie_Statics::NewProp_energia = { "energia", nullptr, (EPropertyFlags)0x0010000000020001, UE4CodeGen_Private::EPropertyGenFlags::Int, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(AZombie, energia), METADATA_PARAMS(Z_Construct_UClass_AZombie_Statics::NewProp_energia_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AZombie_Statics::NewProp_energia_MetaData)) };
+	const UE4CodeGen_Private::FUnsizedIntPropertyParams Z_Construct_UClass_AZombie_Statics::NewProp_energia = { "energia", nullptr, (EPropertyFlags)0x0010000000000001, UE4CodeGen_Private::EPropertyGenFlags::Int, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(AZombie, energia), METADATA_PARAMS(Z_Construct_UClass_AZombie_Statics::NewProp_energia_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AZombie_Statics::NewProp_energia_MetaData)) };
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AZombie_Statics::NewProp_Fuerza_MetaData[] = {
 		{ "Category", "Zombie" },
@@ -137,7 +137,7 @@ void EmptyLinkFunctionForGeneratedCodeZombie() {}
 		}
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(AZombie, 2208235676);
+	IMPLEMENT_CLASS(AZombie, 383627271);
 	template<> PVZ_USFX_LAB02_API UClass* StaticClass<AZombie>()
 	{
 		return AZombie::StaticClass();

@@ -84,6 +84,7 @@ void APVZ_USFX_LAB02GameModeBase::BeginPlay()
 			NewZombieCono->SetPartidaObservable(PartidaObservable);
 			ArrayZombies.Add(NewZombieCono);
 			NewZombieCono->SetStrategy(DefaultMoveStrategy);  // se le asigna la estrategia por defecto
+			//NewZombieCono->SetStrategy(SaltoTigreMoveStrategy);  // estrategia para probar al inicio
 		}
 		if (ColumnaZombies == 5)
 		{

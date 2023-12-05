@@ -32,7 +32,7 @@ void ASaltoTigreMoveStrategy::Tick(float DeltaTime)
 void ASaltoTigreMoveStrategy::Move(AZombie* _zombie)
 {
     AZombie* Zombie = _zombie;
-    APlant* PlantaCercanaY;
+    APlant* PlantaCercanaY = nullptr;
     Zombie->Velocidad = 1000.0f;
     TArray<AActor*> Plantas;
     UGameplayStatics::GetAllActorsOfClass(GetWorld(), APlant::StaticClass(), Plantas);
@@ -52,20 +52,21 @@ void ASaltoTigreMoveStrategy::Move(AZombie* _zombie)
                 DistanciaMinimaY = DistanciaEnY;
                 PlantaCercanaY = Cast<APlant>(Plantas[i]);
             }
+            Zombie->AddObserver(Cast<IObserver>(Plantas[i])); // se agrega la planta al array de observadores
         }
     }
 
     // Verifica si se encontró alguna planta cercana en Y
     if (PlantaCercanaY != nullptr)
     {
-        // Ahora PlantaCercanaY apunta a la planta más cercana en el eje Y
-        Zombie->LocalizacionObjetivo = PlantaCercanaY->GetActorLocation();
-
-        // calcula la direccion y distancia al objetivo si no la tiene
+        // calcula la Localizacion y distancia al objetivo si no la tiene
         if (Zombie->Direccion.Z == 0.0f)
         {
+            Zombie->LocalizacionObjetivo = PlantaCercanaY->GetActorLocation();
             Zombie->DistanciaAlObjetivo = FVector::Dist(Zombie->LocalizacionObjetivo, Zombie->GetActorLocation());
         }
+
+        // Ahora PlantaCercanaY apunta a la planta más cercana en el eje Y
         Zombie->LocalizacionObjetivo = PlantaCercanaY->GetActorLocation() + FVector(0.0f, 0.0f, Zombie->DistanciaAlObjetivo / 2);
 
         // calcula la direccion y distancia al objetivo
@@ -74,44 +75,16 @@ void ASaltoTigreMoveStrategy::Move(AZombie* _zombie)
 
         Zombie->TienePlantaAlFrente = true; // Bandera Para que vaya a la casa
 
-        Zombie->AddObserver(Cast<IObserver>(PlantaCercanaY)); // se agrega la planta al array de observadores
+    }
+    else
+    {
+        // Si no se encontró una planta al frente, restablecer la bandera
+        Zombie->TienePlantaAlFrente = false;
     }
 }
 
 
-//void ASaltoTigreMoveStrategy::Move(AZombie* _zombie)
-//{
-//    AZombie* Zombie = _zombie;
-//    APlant* PlataCercana;
-//    Zombie->Velocidad = 1000.0f;
-//    TArray<AActor*> Plantas;
-//    UGameplayStatics::GetAllActorsOfClass(GetWorld(), APlant::StaticClass(), Plantas);
-//
-//    for (int32 i = 0; i < Plantas.Num(); i++)
-//    {
-//        // comparar la posicion x de la Planta con la del zombie
-//        if (FMath::IsNearlyEqual(Plantas[i]->GetActorLocation().X, Zombie->GetActorLocation().X, 0.1f))
-//        {
-//
-//            // calcula la direccion y distancia al objetivo si no la tiene
-//            if (Zombie->Direccion.Z == 0.0f)
-//            {
-//                Zombie->DistanciaAlObjetivo = FVector::Dist(Zombie->LocalizacionObjetivo, Zombie->GetActorLocation());
-//			}
-//
-//            // si la posicion x de la planta es igual a la del zombie, entonces la planta es el objetivo
-//            Zombie->LocalizacionObjetivo = Plantas[i]->GetActorLocation() + FVector(0.0f, 0.0f, Zombie->DistanciaAlObjetivo / 2);
-//
-//            // calcula la direccion y distancia al objetivo
-//            Zombie->DistanciaAlObjetivo = FVector::Dist(Zombie->LocalizacionObjetivo, Zombie->GetActorLocation());
-//            Zombie->Direccion = (Zombie->LocalizacionObjetivo - Zombie->GetActorLocation()).GetSafeNormal();
-//
-//            Zombie->TienePlantaAlFrente = true; // Bandera Para que vaya a la casa
-//
-//            Zombie->AddObserver(Cast<IObserver>(Plantas[i])); // se agrega la planta al array de observadores
-//        }
-//    }
-//}
+
 
 									//Giro hacia la planta
 

@@ -21,7 +21,7 @@ public:
 	UPROPERTY(EditAnywhere) // para ver y editar desde el unreal
 	float Velocidad;
 
-	UPROPERTY(VisibleAnywhere) // para ver desde el unreal
+	UPROPERTY(EditAnywhere) // para ver y editar desde el unreal
 	int energia;
 
 	UPROPERTY(VisibleAnywhere) // para ver desde el unreal

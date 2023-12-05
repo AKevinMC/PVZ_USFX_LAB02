@@ -3,7 +3,7 @@
   <ItemGroup>
     <None Include="..\..\PVZ_USFX_LAB02.uproject" />
     <Filter Include="Source">
-      <UniqueIdentifier>{2C3090E3-A7D5-43F3-A627-9E063BB7CB96}</UniqueIdentifier>
+      <UniqueIdentifier>{0C62894C-F202-423B-82BA-7B352CE4817E}</UniqueIdentifier>
     </Filter>
     <None Include="..\..\Source\PVZ_USFX_LAB02.Target.cs">
       <Filter>Source</Filter>
@@ -14,7 +14,7 @@
     <None Include="..\..\.gitattributes" />
     <None Include="..\..\.gitignore" />
     <Filter Include="Config">
-      <UniqueIdentifier>{90AFEFE6-BABC-4649-B7A7-FCE0E6A3C063}</UniqueIdentifier>
+      <UniqueIdentifier>{A26C811C-B8C6-443D-837E-F155F6C8AB8A}</UniqueIdentifier>
     </Filter>
     <None Include="..\..\Config\DefaultEditor.ini">
       <Filter>Config</Filter>
@@ -29,7 +29,7 @@
       <Filter>Config</Filter>
     </None>
     <Filter Include="Source\PVZ_USFX_LAB02">
-      <UniqueIdentifier>{FD5EFD10-A1D9-4766-9322-2EBEA7A3EB38}</UniqueIdentifier>
+      <UniqueIdentifier>{12E17D00-E517-455B-A7A5-CCA0A1BF4088}</UniqueIdentifier>
     </Filter>
     <ClCompile Include="..\..\Source\PVZ_USFX_LAB02\DefaultMoveStrategy.cpp">
       <Filter>Source\PVZ_USFX_LAB02</Filter>
